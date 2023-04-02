@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "transportechiarottin-90652",
+    "testing": "delfosbd12-des",
+    "delfosbd12-des": "delfosbd12-des",
+    "transportechiarottin": "transportechiarottin-90652",
+    "transportechiarottin-90652": "transportechiarottin-90652",
+    "imagenweb13": "imagenweb13",
+    "crm73": "crm73",
+    "crm73-2c82c": "crm73-2c82c",
+    "crm73-prod": "imagenweb13---orue-prod",
+    "staging": "imagenweb13",
+    "imagenweb13---orue-prod": "imagenweb13---orue-prod",
+    "production": "imagenweb13---orue-prod"
+  },
+  "targets": {}
+}

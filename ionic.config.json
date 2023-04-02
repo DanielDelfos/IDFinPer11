@@ -1,0 +1,7 @@
+{
+  "name": "CRM Marwek",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

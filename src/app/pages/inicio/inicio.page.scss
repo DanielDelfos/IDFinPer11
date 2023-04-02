@@ -1,0 +1,162 @@
+// ion-content {
+    // background-image: url('../../../assets/imagenes/imagenPrincipal1.png') !important;
+    // background-repeat: no-repeat !important;
+    // background-size: 100% 100% !important;
+    // --offset-top: 0px;
+    // position: absolute;
+    // background-image: url('../../../assets/imagenes/imagenPrincipal1.png') no-repeat center center fixed cover;
+    // background-size: cover !important;
+    // background-image: url("../../../assets/imagenes/banner1-5.png") !important;
+    //background-image: url("../../../assets/imagenes/imagenPrincipal1.png") !important;
+    //background-position: center !important;
+    //background-repeat: no-repeat !important;  
+// }
+// ion-header {
+//     --backgroud: transparent;
+//     --border-color: transparent;
+// }
+// ion-toolbar {
+//     --backgroud: transparent;
+//     --border-color: transparent;
+// }
+// ion-buttons {
+//     --backgroud: transparent;
+//     --border-color: transparent;
+// }
+// ion-button {
+//     --backgroud: transparent;
+//     --border-color: transparent;
+// }
+.fondoNegro {
+    color: black !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    background: none !important;
+}
+/* prueba */
+.shadow-red{
+    box-shadow: 0px 14px 25px rgba(182, 30, 30, 0.59);
+    border-radius: 5px;
+}
+/* Logo en Header y otros*/
+.sinMargen{
+    margin: 0px !important;
+}
+/* Fuente Orue&Godoy*/
+.fuenteOrue{
+    font-family: 'PT Serif', serif !important;
+}
+/* BarraWhatsapp al final no lo uso, dejar como pruebas*/
+.barraWhatsapp{
+    background-image: url("../../../assets/imagenes/cotizaWhatsapp.png") !important;
+    background-repeat: no-repeat !important; 
+    background-size: inherit !important;
+}
+/* Imagen en backgroud 1 (lo uso para banners)*/
+.imagenDetras1{
+    --background: none;
+    margin: 0px !important; 
+    box-shadow: none !important;
+    min-height: 500px !important; 
+    // flex: 1 !important;
+    // min-width: 1600px !important;
+    background-image: url("../../../assets/imagenes/banner1-1.png") !important;
+    // max-width: 100% !important;
+    // max-height: 100% !important;
+    background-position: center !important; 
+    background-repeat: no-repeat !important; // no repetir
+    // background-attachment: fixed !important;  //queda fija la imagen y texto no
+    // opacity: 0.5 !important;   // anda pero me opaca el texto tambien
+}
+/* Imagen en backgroud */
+.imagenDetras2{
+    --background: none;
+    margin: 0 !important;
+    min-height: 500px !important;
+    background-image: url("../../../assets/imagenes/banner1-2.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important; // no repetir
+}
+/* Imagen en backgroud */
+.imagenDetras3{
+    --background: none;
+    margin: 0 !important;
+    min-height: 500px !important;
+    background-image: url("../../../assets/imagenes/banner1-3.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important; // no repetir
+}
+/* Imagen en backgroud */
+.imagenDetras4{
+    --background: none;
+    margin: 0 !important;
+    min-height: 500px !important;
+    background-image: url("../../../assets/imagenes/banner1-4.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important; // no repetir
+}
+/* Imagen en backgroud */
+.imagenDetras5{
+    --background: none;
+    margin: 0 !important;
+    min-height: 500px !important;
+    background-image: url("../../../assets/imagenes/banner1-5.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important; // no repetir
+}
+/* Prueba para alinear central el texto horizontal y vertical, anda  */
+.centrarTexto{
+    text-align: center !important;
+    position: absolute !important;
+    top: 75% !important;
+
+    // display: flex !important;
+    // align-items: center !important;
+}
+// Para card principal full pantalla
+.cardPrincipal1{
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    --background: none;
+    background-color: transparent !important;
+    background-image: url("../../../assets/imagenes/imagenPrincipal1.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;     
+}
+.cardCupones{
+    --background: none;
+    margin: 0 !important;
+    border: 0 !important;
+    background-image: url("../../../assets/imagenes/cupones.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important; 
+}
+.cardContrato{
+    --background: none;
+    margin: 0 !important;
+    border: 0 !important;
+    background-image: url("../../../assets/imagenes/contrato.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important; 
+}
+.cardPagos{
+    --background: none;
+    margin: 0 !important;
+    border: 0 !important;
+    background-image: url("../../../assets/imagenes/pagos.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important; 
+}
+.cardSatisfaccion{
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    --background: none;
+    background-color: transparent !important;
+    background-image: url("../../../assets/imagenes/satisfaccion.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;     
+}

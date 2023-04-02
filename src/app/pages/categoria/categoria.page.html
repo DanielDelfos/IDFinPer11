@@ -1,0 +1,98 @@
+<app-header tituloPagina="Categoria"></app-header>
+
+<ion-content padding fullscreen>
+
+    <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+        <!------------ Grilla ------------>
+        <ion-grid fixed>
+
+            <!-- ------ Columna 1 --------- -->
+            <ion-row>
+                <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                    <!-- ------------------Encabezado del registro ---------------- -->
+                    <ion-card>
+                        <ion-item color="medium">
+                            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+                            <ion-label>{{ categoria.nombreCategoria }}</ion-label>
+
+                            <ion-button (click)="categoriaMore( $event )" expand="block" slot="end">
+                                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                            </ion-button>
+
+                        </ion-item>
+
+                        <ion-card-content>
+                            El Categoria es utiliza en el Sitio Web Público, realice los cambios en la siguiente sección.
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- ------------------Formulario de modificacion del registro ---------------- -->
+                    <ion-card>
+                        <!-- SFAD{{ categoria.descripCortaProd}} {{ categoria.cotizadorTipo}} -->
+                        <ion-list>
+
+                            <ion-item>
+                                <ion-label position="floating">* NOMBRE</ion-label>
+                                <ion-input type="text" name="nombreCategoria" [(ngModel)]="categoria.nombreCategoria" required></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Link al Icono </ion-label>
+                                <ion-input type="text" name="iconoCategoria" [(ngModel)]="categoria.iconoCategoria"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Notas</ion-label>
+                                <ion-input type="text" name="notasCategoria" [(ngModel)]="categoria.notasCategoria"></ion-input>
+                            </ion-item>
+
+
+<!--                             <ion-item>
+                                <ion-label position="stacked">Género</ion-label>
+                                <ion-select placeholder="Indique uno">
+                                    <ion-select-option value="f">Mujer</ion-select-option>
+                                    <ion-select-option value="m">Hombre</ion-select-option>
+                                </ion-select>
+                            </ion-item> -->
+
+                        </ion-list>
+
+                        <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+                            Guardar
+                        </ion-button>
+
+
+                        <!-- Mensaje validando formulario  -->
+
+                        <ion-note *ngIf="formulario.valid" color="success">&nbsp; Datos validos, recuerde guardar cambios.<br></ion-note>
+                        <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+
+
+                        <!-- Notas finales del formulario  -->
+                        <ion-card-content>
+                            <h6>
+                                Tips:
+                            </h6>
+                            <h6>
+                                (*) Datos obligatorios.
+                            </h6>
+                        </ion-card-content>
+
+                    </ion-card>
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+
+    <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+    <app-footer2></app-footer2>   
+        
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO ---------------------  -->
+<!-- no andan botones end y top --> 
+<app-footer></app-footer>

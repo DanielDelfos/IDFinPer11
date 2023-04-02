@@ -1,0 +1,147 @@
+<!-- COMPONENTE PARA LISTAR LOS PRODUCTOS -->
+
+<!-- ------------------BUSCADOR ---------------- -->
+<ion-card style="width: 100%; margin: 0; border: 0; 
+                  box-shadow: none; background-color: white;">
+
+  <ion-grid fixed>
+    <ion-row>
+
+      <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+
+        <!-- Buscador -->
+        <ion-searchbar color="light" placeholder="Buscar" debounce="1000" animated (ionChange)="buscarProductos( $event )">
+        </ion-searchbar>
+
+      </ion-col>
+
+      <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+        <br>
+      </ion-col>
+
+      <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+        <br>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <!-- ------ Buscador en la lista original--------- 
+  (falta implementar debounce -->
+  
+  
+  <!-- <ion-item lines="none"> -->
+    <!-- <ion-searchbar color="light" placeholder="Buscar" debounce="1000" animated (ionChange)="buscarProductos( $event )">
+    </ion-searchbar> -->
+    
+    <!--     <ion-button (click)="ListarProductos()" fill="clear" slot="end">
+      <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+    </ion-button> -->
+    
+  <!-- </ion-item> -->
+
+</ion-card>
+
+
+<!-- ------------LISTADO ------------------- -->
+<ion-card  style="width: 100%; margin: 0; border: 0; 
+                  box-shadow: none; background-color: white;">
+
+  <!-- Recorro los registros  -->
+  <div *ngIf="!cargandoLista && productos.length > 0">
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col #lista *ngFor="let producto of productos | filtroProductos: textoBuscar: 'nombreProducto'; let i = index" 
+                  size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+          
+          <ion-card [routerLink]="['/seguro', producto.idProducto ]" detail color="light">
+            
+            
+            <ion-card-header>
+              
+              <ion-card-title>
+                <!-- <img class="img" src="https://firebasestorage.googleapis.com/v0/b/imagenweb13.appspot.com/o/productos%2Fautomoviles.png?alt=media&token=53cb1aed-57a9-42e6-b93a-fabbc9c06be0"> -->
+                
+                <div *ngIf="producto.categoriaProd != 'kits'">
+                  <img src='{{ producto.urlImagenProd }}'>
+                </div>
+                
+                <ion-grid fixed>
+                  <ion-row>
+                      <!-- {{ producto.categoriaProd }} -->
+
+                    <ion-col>
+                      <!-- <i class="fas fa-bicycle" color="secondary"></i> -->
+                      <div *ngIf="producto.categoriaProd == 'kits'">
+                        <span style="font-size: 36px; color: Mediumslateblue;">
+                          <i class='{{ producto.urlImagenProd }}'></i>
+                        </span>
+                      </div>
+
+                      <div>
+                        {{ producto.nombreProducto }}
+                      </div>
+                    </ion-col>
+
+                    <ion-col>
+
+                      <!-- Boton Promociones -->
+                      <ion-button color="danger" expand="full" 
+                        *ngIf="producto.esPromocionProd == 'true'">
+                          PROMO DESDE ${{ producto.precioActualProd }}
+                          <!-- | currency:'CAD':'symbol-narrow':'4.0-0' anda pero tiene punto como separador de miles -->
+                      </ion-button>
+
+                      <!-- Boton comun -->
+                      <ion-button expand="full"
+                        *ngIf="producto.esPromocionProd != 'true'">
+                          +INFO
+                      </ion-button>
+
+                    </ion-col>
+
+                  </ion-row>
+
+                </ion-grid>
+              </ion-card-title>
+
+            </ion-card-header>
+
+            <ion-card-content class="ion-text-left">
+              {{ producto.descripCortaProd }}
+            </ion-card-content>
+
+          </ion-card>
+          
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+  <!-- Mensaje sin registros en la lista  -->
+  <div *ngIf="!cargandoLista && productos.length === 0">
+      <h6>
+          <ion-list>
+              <ion-label color="danger">
+                  &nbsp; Sin datos ingresados
+              </ion-label>
+          </ion-list>
+      </h6>
+  </div>
+
+  <!-- Mensaje transitorio -->
+  <div *ngIf="cargandoLista">
+      <h6>
+          <ion-list>
+              <ion-label color="warning">
+                  &nbsp; Buscando...
+              </ion-label>
+          </ion-list>
+      </h6>
+  </div>
+
+</ion-card>
+

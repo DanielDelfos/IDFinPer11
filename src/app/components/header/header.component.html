@@ -1,0 +1,90 @@
+<!-- Cabecera de la apliación (fija) -->
+<!-- no puede hacer que sea transparente con la misma imagen que content.app-boton
+translucent="true" -->
+
+<!-- header -->
+<!-- <ion-header class="fondoNegro">   -->
+    <!-- opcional traslucent -->
+
+    <!-- <div>prueba</div> -->
+
+    <ion-toolbar>
+        
+        <ion-buttons slot="start" >
+
+            <ion-button color="primary" (click)="toggleMenu()">
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+            
+        <ion-buttons slot="start" expand="full" collapse="true">
+            <!-- <ion-button (click)="irPagina( '/inicio' )" class="LogoHeader">
+                <ion-title>
+                    <img class="img" src="assets/imagenes/IsoLogo202x64.png">
+                </ion-title>
+            </ion-button> -->
+
+         
+            <ion-button color="primary" (click)="irPagina( '/productos' )" fill="clear">
+                Productos
+                <!-- <img class="img" src="assets/imagenes/hotSale.png"> -->
+            </ion-button>
+            
+            <div>&nbsp;&nbsp;&nbsp;</div> 
+
+            <ion-button color="primary" (click)="irPagina( '/publicaciones' )" fill="clear" class="noVisible500">
+                Publicaciones
+            </ion-button>
+
+            <div>&nbsp;&nbsp;&nbsp;</div> 
+
+            <ion-button color="primary" (click)="irPagina( '/cupones' )" fill="clear" class="noVisible700">
+                Beneficios Exclusivos
+            </ion-button>
+
+            <!-- <div>&nbsp;&nbsp;&nbsp;</div> 
+
+            <ion-button color="light" (click)="irPagina( '/beneficios' )" fill="clear" class="noVisible900">
+                Beneficios Exclusivos
+            </ion-button>        -->
+            
+            <!-- <ion-button style="color: #7974ff" (click)="irPagina( '/kits' )" fill="clear">
+                <strong>
+                    Seguros FreeStyle
+                </strong>
+            </ion-button>   -->
+
+            <!-- <a style="color: #7974ff; font-size:120%; text-decoration:none" 
+                        href="/inicio#kits">
+                <strong>
+                    <ion-text>
+                        Seguros Free
+                    </ion-text>
+                    <ion-text style="font-style: italic;">
+                            Style
+                    </ion-text>
+                </strong>
+            </a> -->
+
+        </ion-buttons>
+
+<!--         <ion-segment (ionChange)="menuClic($event)">
+            <ion-segment-button class="noVisible" value="friends">
+              <ion-label>Friends</ion-label>
+            </ion-segment-button>
+
+            <ion-segment-button value="enemies">
+              <ion-label>Enemies</ion-label>
+            </ion-segment-button>
+        </ion-segment> -->
+
+        <!-- <ion-buttons slot="end">
+            <ion-button (click)="irPagina( '/consultanos' )" slot="end" color="primary" shape="round" fill="outline">
+                Consultanos
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons> -->
+        
+    </ion-toolbar>
+
+<!-- </ion-header> -->

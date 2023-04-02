@@ -1,0 +1,156 @@
+<app-header tituloPagina="Producto"></app-header>
+
+<ion-content padding fullscreen>
+
+    <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+        <!------------ Grilla ------------>
+        <ion-grid fixed>
+
+            <!-- ------ Columna 1 --------- -->
+            <ion-row>
+                <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                    <!-- ------------------Encabezado del registro ---------------- -->
+                    <ion-card>
+                        <ion-item color="medium">
+                            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+                            <ion-label>{{ plan.nombrePlan }}</ion-label>
+
+                            <ion-button (click)="planMore( $event )" expand="block" slot="end">
+                                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                            </ion-button>
+
+                        </ion-item>
+
+                        <ion-card-content>
+                            El plan es utilizado para asignarlo a los productos, realice los cambios en la siguiente sección.
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- ------------------Formulario de modificacion del registro ---------------- -->
+                    <ion-card>
+                        <!-- SFAD{{ producto.descripCortaProd}} {{ producto.cotizadorTipo}} -->
+                        <ion-list>
+
+                            <!-- tipos usados: type="date", "text" -->
+                            <!-- campos obligatorios: required -->
+
+                            <ion-item>
+                              <ion-label position="floating">* ID DEL PRODUCTO (despues en automatico)</ion-label>
+                              <ion-input type="text" name="idProducto" [(ngModel)]="plan.idProducto" required></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">* NOMBRE DEL PLAN (Ej. Plan A)</ion-label>
+                                <ion-input type="text" name="nombrePLan" [(ngModel)]="plan.nombrePlan" required></ion-input>
+                            </ion-item>
+                            
+                            <ion-item>
+                              <ion-label position="floating">* CUOTA VALOR DEL PLAN (Ej. $250)</ion-label>
+                              <ion-input type="text" name="cuotaValorPlan" [(ngModel)]="plan.cuotaValorPlan" required></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">* CUOTA FRECUENCIA DEL PLAN (Ej. xMes)</ion-label>
+                                <ion-input type="text" name="cuotaFecuenciaPLan" [(ngModel)]="plan.cuotaFrecuenciaPLan"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">* SUMA ASEGURADA (Ej. $20.000)</ion-label>
+                                <ion-input type="text" name="sumaAseguradaPlan" [(ngModel)]="plan.sumaAseguradaPlan"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">* COMENTARIOS DEL PLAN</ion-label>
+                                <ion-input type="text" name="comentariosPlan" [(ngModel)]="plan.comentariosPlan"></ion-input>
+                            </ion-item>
+
+                            <ion-item-divider>
+                            </ion-item-divider>
+
+                            <ion-item>
+                                <ion-label position="floating">Notas Plan</ion-label>
+                                <ion-input type="text" name="notasPlan" [(ngModel)]="plan.notasPlan"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Vigencia Desde Plan</ion-label>
+                                <ion-input type="date" name="vigenciaDesdePlan" [(ngModel)]="plan.vigenciaDesdePlan"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Estado Plan (Vigente, No vigente)</ion-label>
+                                <ion-input type="text" name="estadoPlan" [(ngModel)]="plan.estadoPlan"></ion-input>
+                            </ion-item>
+                            
+                            <ion-item>
+                                <ion-label position="floating">Orden Plan</ion-label>
+                                <ion-input type="text" name="ordenPlan" [(ngModel)]="plan.ordenPlan"></ion-input>
+                            </ion-item>
+
+<!--                             <ion-item>
+                                <ion-label position="stacked">Género</ion-label>
+                                <ion-select placeholder="Indique uno">
+                                    <ion-select-option value="f">Mujer</ion-select-option>
+                                    <ion-select-option value="m">Hombre</ion-select-option>
+                                </ion-select>
+                            </ion-item> -->
+
+                        </ion-list>
+
+                        <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+                            Guardar
+                        </ion-button>
+
+
+                        <!-- Mensaje validando formulario  -->
+
+                        <ion-note *ngIf="formulario.valid" color="success">&nbsp; Datos validos, recuerde guardar cambios.<br></ion-note>
+                        <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+
+
+                        <!-- Notas finales del formulario  -->
+                        <ion-card-content>
+                            <h6>
+                                Tips:
+                            </h6>
+                            <h6>
+                                (*) Datos obligatorios.
+                            </h6>
+                        </ion-card-content>
+
+                    </ion-card>
+
+                    <!-- ----------------------Relacionados---------------- -->
+                    <ion-card>
+                        <ion-list>
+                            <ion-item color="medium">
+                                <ion-label>Entidades relacionadas a éste registro</ion-label>
+                            </ion-item>
+
+                            <ion-item [routerLink]="['/plandets', plan.idPlan ]" detail>
+                                <ion-label>Detalle de Planes</ion-label>
+                            </ion-item>
+                            
+                        </ion-list>
+
+                        <ion-card-content>
+                            Recuerde guardar primero éste registro y volver a ingresar.
+                        </ion-card-content>
+                    </ion-card> 
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+
+    <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+    <app-footer2></app-footer2>   
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO ---------------------  -->
+<!-- no andan botones end y top --> 
+<app-footer></app-footer>

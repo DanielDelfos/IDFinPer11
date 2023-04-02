@@ -1,0 +1,11 @@
+// Para tarjetas de los kits
+.cardKit{
+    width: 100% !important; 
+    box-shadow:#FFFFFF !important; 
+    margin: 0ch !important; 
+    background-color: #513F95 !important;
+}
+// Para las tarjetas de los kits pero cuando paso el mouse
+.cardKit:hover{
+    background-color: rgb(0, 140, 255) !important;
+}

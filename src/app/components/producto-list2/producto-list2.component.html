@@ -1,0 +1,107 @@
+<!-- COMPONENTE PARA LISTAR LOS PRODUCTOS (ESPECIAL PARA KITS EN PAGINA INICIO) -->
+<!-- Es una lista con card mas chicos y solo imagen y titulo -->
+
+<!-- ------------------BUSCADOR (NO USO) ---------------- -->
+
+
+<!-- ------------LISTADO ------------------- -->
+<ion-card style="width: 100%; border: 0ch; box-shadow: none; margin: 0ch;" 
+          color="primary">
+
+  <ion-card-header class="ion-text-center">
+    <ion-card-title>
+      <br>
+      <ion-text style="font-size:150%;">
+          Seguros
+      </ion-text>
+      <ion-text style="font-size:150%; color: rgb(0, 140, 255);">
+          &nbsp;Free
+      </ion-text>
+      <ion-text style="font-size:150%; font-style: italic; color: rgb(0, 140, 255);">
+          <strong>
+              Style
+          </strong>
+      </ion-text>
+    </ion-card-title>
+    <ion-card-subtitle style="font-size:150%;">
+        Descubrí las coberturas y servicios que tenemos para vos
+    </ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <!-- Recorro los registros  -->
+    <div *ngIf="!cargandoLista && productos.length > 0">
+      
+      <ion-grid fixed class="ion-text-center">
+        <ion-row>
+          <ion-col #lista *ngFor="let producto of productos | filtroProductos: textoBuscar: 'nombreProducto'; let i = index" 
+          size-xl="3" size-lg="3" size-md="3" size-sm="3" size-xs="8">
+            
+            <ion-card class="cardKit" [routerLink]="['/seguro', producto.idProducto ]">
+              
+              <ion-card-header>
+                
+                <ion-card-title >
+
+                  <!-- Modo imagen -->
+                  <!-- <img class="img" src="https://firebasestorage.googleapis.com/v0/b/imagenweb13.appspot.com/o/productos%2Fautomoviles.png?alt=media&token=53cb1aed-57a9-42e6-b93a-fabbc9c06be0"> -->
+                  <div>
+                    <img class="img" src='{{ producto.urlImagenProd }}'>
+                  </div>
+
+                  <!-- modo icono -->
+                  <!-- <div *ngIf="producto.categoriaProd == 'kits'">
+                    <span style="font-size: 36px; color: Mediumslateblue;">
+                      <i class='{{ producto.urlImagenProd }}'></i>
+                    </span>
+                  </div> -->
+
+                </ion-card-title>
+                
+                <ion-card-subtitle style="color: #FFFFFF;">
+                  {{ producto.nombreProducto }}
+                </ion-card-subtitle>
+           
+              </ion-card-header>
+
+            </ion-card>
+            
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+          <br>
+        </ion-row>
+
+      </ion-grid>
+
+    </div>
+
+    <!-- Mensaje sin registros en la lista  -->
+    <div *ngIf="!cargandoLista && productos.length === 0">
+        <h6>
+            <ion-list>
+                <ion-label color="danger">
+                    &nbsp; Sin datos ingresados
+                </ion-label>
+            </ion-list>
+        </h6>
+    </div>
+
+    <!-- Mensaje transitorio -->
+    <div *ngIf="cargandoLista">
+        <h6>
+            <ion-list>
+                <ion-label color="warning">
+                    &nbsp; Buscando...
+                </ion-label>
+            </ion-list>
+        </h6>
+    </div>
+  
+  </ion-card-content>
+  
+</ion-card>
+

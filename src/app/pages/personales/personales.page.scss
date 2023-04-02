@@ -1,0 +1,17 @@
+/* sin borde */
+.sinBorde{
+    box-shadow: none !important;
+    text-align: center;
+}
+.cardBarraPersonas{
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    --background: none;
+    background-color: transparent !important;
+    background-image: url("../../../assets/imagenes/barraPersonas.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;  
+    color: transparent !important;   
+}

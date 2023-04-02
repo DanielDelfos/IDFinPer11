@@ -1,0 +1,49 @@
+<form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+
+  <ion-list>
+
+      <ion-item style="color: white;">
+          <ion-label position="floating">* SU NOMBRE</ion-label>
+          <ion-input type="text" name="interesadoNombre" [(ngModel)]="consultaSitio.interesadoNombre" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="floating">* EMAIL</ion-label>
+          <ion-input type="email" name="interesadoEmail" [(ngModel)]="consultaSitio.interesadoEmail"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="floating">* MENSAJE O CONSULTA</ion-label>
+          <ion-input type="text" name="consultaMensaje" [(ngModel)]="consultaSitio.consultaMensaje"></ion-input>
+      </ion-item>   
+
+      <ion-item>
+          <ion-label position="floating">TELEFONO</ion-label>
+          <ion-input type="text" name="interesadoTelefono" [(ngModel)]="consultaSitio.interesadoTelefono"></ion-input>
+      </ion-item>                                    
+
+  </ion-list>
+
+  <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+      Enviar
+  </ion-button>
+  
+  <!-- Notas finales del formulario  -->
+  <h6>
+      <!-- Mensaje validando formulario  -->
+      <ion-note *ngIf="formulario.valid" color="success">&nbsp; Consulta completa, puede enviarla.<br></ion-note>
+      <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+      (*) Datos obligatorios.
+      <!-- pruebas vuelve a {{ vuelveApagina }} -->
+      <!-- consulta desde {{ consultaDesde }} -->
+  </h6>
+
+  <ion-card-content class="sinMargen">
+        <a href="https://wa.me/5493525483845/?text=Hola%20quisiera%20recibir%20asesoramiento%20sobre%20seguros.%20Muchas%20gracias." 
+            target="_blank" style="text-decoration:none">
+            <img class="img" src="assets/imagenes/consultaWhatsapp.png">
+            <!-- <i class="fab fa-whatsapp"></i> -->
+        </a>   
+  </ion-card-content>
+  
+</form>

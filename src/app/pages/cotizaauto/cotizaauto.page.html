@@ -1,0 +1,310 @@
+<!-- ------------CABECERA DE LA PAGINA -------------------------- -->
+<ion-header traslucent>
+  <app-header tituloPagina="no uso"></app-header>
+  
+  <!-- <script>wokanInitWebpack({ sid:'529@5dea767c16384', mainColor:'#513F95' });</script>  -->
+  
+</ion-header>
+
+
+<!-- ------------CUERPO DE LA PAGINA -------------------------- -->
+<ion-content padding fullscreen>
+  
+
+  <!-- ------------Boton flotante-------- -->
+  <app-boton></app-boton>
+  
+  <!-- TITULO DE LA PAGINA ----------------------------------------------->
+  <ion-card class="sinBorde">
+    <ion-card-header color="secondary">
+      <ion-card-title class="ion-text-center">
+        COTIZA TU SEGURO DEL AUTOMOTOR
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+
+  <!------------ BOTON COTIZADOR Y FORM. CONSULTA------------------------------>
+  <ion-card class="sinBorde">
+      <!------------ Grilla ------------>
+      <ion-grid fixed>
+
+        <!-- ------ Registro  1 --------- -->
+        <ion-row>
+            <!-- ------ Columna  1 --------- -->
+            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+                <!-- ------ Card Servicios imagen --------- -->
+                <ion-card class="sinBorde">
+                  <ion-card-header>
+
+                    <ion-card-title>
+                      <img class="img" src="assets/imagenes/seguroAuto2.png">
+                    </ion-card-title>
+
+                  </ion-card-header>
+                </ion-card>
+            </ion-col>
+
+            <!-- ------ Columna  2 --------- -->
+            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+              <!-- ------ CARD FORMULARIO TE AYUDAMOS --------- -->
+              <ion-card class="sinBorde">
+
+                <ion-card-header> 
+                    <ion-card-subtitle>EN POCOS PASOS OBTENÉ TU COTIZACIÓN</ion-card-subtitle>
+                    <ion-card-title>
+
+                        <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+
+                            <ion-list>
+
+                                <ion-item>
+                                    <ion-label position="floating">* SU NOMBRE</ion-label>
+                                    <ion-input data-wokan-auto="nombre" type="text" name="interesadoNombre" [(ngModel)]="cotizaAuto.interesadoNombre" required></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label position="floating">* EMAIL</ion-label>
+                                    <ion-input data-wokan-auto="email" type="email" name="interesadoEmail" [(ngModel)]="cotizaAuto.interesadoEmail" required></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label position="floating">TELEFONO</ion-label>
+                                    <ion-input data-wokan-auto="telefono" type="text" name="interesadoTelefono" [(ngModel)]="cotizaAuto.interesadoTelefono"></ion-input>
+                                </ion-item>                                    
+
+                            </ion-list>
+
+                            <ion-button data-wokan-auto-cotizar type="submit" expand="full" [disabled]="formulario.invalid">
+                                COTIZÁ AHORA
+                            </ion-button>
+                            
+                            <h6>
+                                <!-- Mensaje validando formulario  -->
+                                <ion-note *ngIf="formulario.valid" color="success">&nbsp; Solicitud completa, puede enviarla.<br></ion-note>
+                                <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+                                (*) Datos obligatorios.
+                            </h6>
+
+                            <ion-card-content class="sinMargen">
+                                <a href="https://wa.me/5493525483845/?text=Hola%20quisiera%20recibir%20asesoramiento%20sobre%20seguros.%20Muchas%20gracias." 
+                                  target="_blank" style="text-decoration:none">
+                                  <img class="img" src="assets/imagenes/cotizaWhatsapp.png">
+                                  <!-- <i class="fab fa-whatsapp"></i> -->
+                                  <br>
+                                  </a>   
+                            </ion-card-content>
+                            
+                        </form>
+                        
+                    </ion-card-title>
+                </ion-card-header>
+
+              </ion-card>
+
+            </ion-col>
+        </ion-row>
+
+
+      </ion-grid>
+  </ion-card>
+
+
+  <!------------  COBERTURAS --------------------------------------------->
+  <ion-card class="sinMargen">
+    <ion-card-subtitle class="ion-text-center">
+      <br>
+      <strong>TIPOS DE COBERTURAS</strong>
+    </ion-card-subtitle>
+
+    <!------------ Grilla ------------>
+    <ion-grid fixed>
+
+      <!-- ------ Registro  1 --------- -->
+      <ion-row>
+
+        <!-- ------ Columna  1 --------- -->
+        <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+          <!-- ------ CARD DE COBERTURA --------- -->
+          <ion-card class="sinMargen">
+            <ion-card-header color="secondary">
+              <ion-card-subtitle>PLAN "A"</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-list>
+                <ion-list-header color="light">
+                  <ion-label color="primary" class="ion-text-center">
+                    <strong>TERCEROS SOLOS</strong>
+                  </ion-label>
+                </ion-list-header>
+
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Responsabilidad Civil</ion-label>
+                </ion-item>  
+                <ion-item disabled>
+                </ion-item>    
+                <ion-item disabled>
+                </ion-item>              
+                <ion-item disabled>
+                </ion-item> 
+
+              </ion-list>
+              
+            </ion-card-content>
+            
+          </ion-card>
+        </ion-col>
+
+        <!-- ------ Columna  2 --------- -->
+        <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+          <!-- ------ CARD DE COBERTURA --------- -->
+          <ion-card class="sinMargen">
+            <ion-card-header color="secondary">
+              <ion-card-subtitle>PLAN "B"</ion-card-subtitle>
+            </ion-card-header>
+
+
+            <ion-card-content>
+              <ion-list>
+                <ion-list-header color="light">
+                  <ion-label color="primary" class="ion-text-center">
+                    <strong>TERCEROS DAÑOS TOTALES</strong>
+                  </ion-label>
+                </ion-list-header>
+
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Responsabilidad Civil</ion-label>              
+                </ion-item>  
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Robo o hurto Total</ion-label>              
+                </ion-item>    
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Incendio Total</ion-label>      
+                </ion-item>              
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Destrucción Total por Accidentes</ion-label>      
+                </ion-item>              
+
+              </ion-list>
+              
+            </ion-card-content>
+            
+          </ion-card>
+        </ion-col>
+
+        <!-- ------ Columna  3 --------- -->
+        <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+          <!-- ------ CARD DE COBERTURA --------- -->
+          <ion-card class="sinMargen">
+            <ion-card-header color="secondary">
+              <ion-card-subtitle>PLAN "C"</ion-card-subtitle>
+            </ion-card-header>
+
+
+            <ion-card-content>
+              <ion-list>
+                <ion-list-header color="light">
+                  <ion-label color="primary" class="ion-text-center">
+                    <strong>TERCEROS COMPLETOS</strong>
+                  </ion-label>
+                </ion-list-header>
+
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Responsabilidad Civil</ion-label>              
+                </ion-item>  
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Robo o hurto Total y Parcial</ion-label>              
+                </ion-item>    
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Incendio Total y Parcial</ion-label>      
+                </ion-item>              
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Destrucción Total por Accidentes</ion-label>      
+                </ion-item>   
+
+              </ion-list>
+              
+            </ion-card-content>
+            
+          </ion-card>
+        </ion-col>
+
+        <!-- ------ Columna  4 --------- -->
+        <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+          <!-- ------ CARD DE COBERTURA --------- -->
+          <ion-card class="sinMargen">
+            <ion-card-header color="secondary">
+              <ion-card-subtitle>PLAN "D"</ion-card-subtitle>
+            </ion-card-header>
+
+
+            <ion-card-content>
+              <ion-list>
+                <ion-list-header color="light">
+                  <ion-label color="primary" class="ion-text-center">
+                    <strong>TODO RIESGO</strong>
+                  </ion-label>
+                </ion-list-header>
+
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Responsabilidad Civil</ion-label>              
+                </ion-item>  
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Robo o hurto Total y Parcial</ion-label>              
+                </ion-item>    
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Incendio Total y Parcial</ion-label>      
+                </ion-item>              
+                <ion-item>
+                  <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                  <ion-label>Destrucción Total y Parcial por Accidentes</ion-label>      
+                </ion-item>  
+
+              </ion-list>
+              
+            </ion-card-content>
+            
+          </ion-card>
+        </ion-col>
+      
+
+      </ion-row>
+
+    </ion-grid>
+
+    <ion-card-content class="ion-text-center">
+      CONSULTE POR COBERTURAS  VIP y PREMIUM (Incluye coberturas de Granizo, Cristales, Cerradura, Reposicion 0KM.).
+      <br>
+      Coberturas y beneficios sujetos a las pautas de suscripción y aceptación de la compañía.
+    </ion-card-content>
+  
+  </ion-card>
+
+
+  <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+  <app-footer2></app-footer2>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO --------------------- 
+(no andan botones end y top -->
+<app-footer></app-footer>

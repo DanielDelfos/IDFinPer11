@@ -1,0 +1,29 @@
+/* sin borde */
+.sinBorde{
+    box-shadow: none !important;
+    text-align: center;
+}
+.cardBarraBlog{
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    --background: none;
+    background-color: transparent !important;
+    background-image: url("../../../assets/imagenes/barraBlog.png") !important;
+    background-position: center !important;
+    background-repeat: repeat-x !important;   //ver las otras barras
+    color: transparent !important;   
+}
+.cardFondoBlog{
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    --background: none;
+    background-color: #FFFFFF !important;
+    background-image: url("../../../assets/imagenes/fondoBlog.png") !important;
+    background-position: center !important;
+    background-repeat: repeat !important;   
+    color: transparent !important;   
+}

@@ -1,0 +1,238 @@
+<!-- COMPONENTE PARA LISTAR PUBLICACIONES (ESPECIAL PARA PAGINA INICIO) -->
+<!-- Es una lista con cards en un banner, solo los publicados -->
+
+<!-- Armo dos tipos distintos, con fondo blanco (para la pagina de inicio) 
+y otro para con el fondo con dibujos para el blog y blogs-->
+
+
+<!-- PARA LA PAGINA DE INICIO -->
+<div *ngIf="llamadoDesde == 'inicio'">
+  <!-- ------------------BUSCADOR (NO USO) ---------------- -->
+  
+  
+  <!-- ------------LISTADO ------------------- -->
+  <ion-card style="background-color: #FFFFFF; width: 100%; border: 0ch; box-shadow: none; 
+                  margin: 0ch;">
+  
+  
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>
+        <br>
+  
+        <ion-text style="font-size:150%; color: rgb(0, 140, 255);">
+            &nbsp;Mirá las últimas novedades en nuestro
+        </ion-text>
+        <ion-text style="font-size:150%; font-style: italic; color: rgb(0, 140, 255);">
+            <strong>
+                Blog
+            </strong>
+        </ion-text>
+   
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+  
+      <!-- Recorro los registros  -->
+      <div *ngIf="!cargandoLista && publicaciones.length > 0">
+  
+        <!-- tengo que ver como recorro registros en un slide y columnas -->
+        <!-- <ion-slides pager="true" #slideDos> -->
+          <!-- <ion-slide> -->
+            
+            <ion-grid fixed class="ion-text-center">
+              <ion-row>
+                <ion-col #lista *ngFor="let publicacion of publicaciones | filtroPublicaciones: textoBuscar: 'nombreProducto'; let i = index" 
+                size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                  
+                  <ion-card [routerLink]="['/blog', publicacion.idPublicacion ]" 
+                            style="width: 100%; 
+                            box-shadow:#FFFFFF; margin: 0ch; 
+                            background-color: rgba(0,0,0,0);">
+                    
+                    <ion-card-header>
+                      
+                      <ion-card-title>
+                          <img class="img" src='{{ publicacion.urlImagenPublic }}'>
+                      </ion-card-title>
+                      
+                      <ion-card-title color="dark" class="ion-text-left">
+                          {{ publicacion.tituloPublicacion }}
+                      </ion-card-title>
+                                
+                    </ion-card-header>
+      
+                    <ion-card-content class="ion-text-left">
+                      {{ publicacion.inicioPublicacion }}
+                    </ion-card-content>
+                    
+                    <ion-card-content class="ion-text-right" style="color: rgb(0, 140, 255);">
+                        <strong>
+                          Leer más
+                        </strong>
+                    </ion-card-content>
+      
+                  </ion-card>
+                  
+                </ion-col>
+      
+              </ion-row>
+      
+              <ion-row>
+                <br>
+              </ion-row>
+      
+            </ion-grid>
+  
+          <!-- </ion-slide> -->
+        <!-- </ion-slides> -->
+  
+      </div>
+  
+      <!-- Mensaje sin registros en la lista  -->
+      <div *ngIf="!cargandoLista && publicaciones.length === 0">
+          <h6>
+              <ion-list>
+                  <ion-label color="danger">
+                      &nbsp; Sin datos ingresados
+                  </ion-label>
+              </ion-list>
+          </h6>
+      </div>
+  
+      <!-- Mensaje transitorio -->
+      <div *ngIf="cargandoLista">
+          <h6>
+              <ion-list>
+                  <ion-label color="warning">
+                      &nbsp; Buscando...
+                  </ion-label>
+              </ion-list>
+          </h6>
+      </div>
+    
+    </ion-card-content>
+    
+  </ion-card>
+
+</div>
+
+
+<!-- PARA LA PAGINA DEL BLOG -->
+<div *ngIf="llamadoDesde == 'blog'">
+  <!-- ------------------BUSCADOR (NO USO) ---------------- -->
+  
+  
+  <!-- ------------LISTADO ------------------- -->
+  <ion-card class="cardFondoBlog">
+  
+  
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>
+        <br>
+  
+        <div *ngIf="llamadoDesde == 'blog'">
+  
+          <ion-text style="font-size:150%;" color="dark">
+            &nbsp;Últimas Noticias
+          </ion-text>
+  
+        </div>
+        <br>
+  
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+  
+      <!-- Recorro los registros  -->
+      <div *ngIf="!cargandoLista && publicaciones.length > 0">
+  
+        <!-- tengo que ver como recorro registros en un slide y columnas -->
+        <!-- <ion-slides pager="true" #slideDos> -->
+          <!-- <ion-slide> -->
+            
+            <ion-grid fixed class="ion-text-center">
+              <ion-row>
+                <ion-col #lista *ngFor="let publicacion of publicaciones | filtroPublicaciones: textoBuscar: 'nombreProducto'; let i = index" 
+                size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                  
+                  <div style="background-color: #FFFFFF;">
+                    <ion-card [routerLink]="['/blog', publicacion.idPublicacion ]" 
+                              style="width: 100%; 
+                              margin: 0ch; border: 0; box-shadow: none; 
+                              background-color: rgba(0,0,0,0);">
+                      
+                      <ion-card-header>
+                        
+                        <ion-card-title>
+                            <img class="img" src='{{ publicacion.urlImagenPublic }}'>
+                        </ion-card-title>
+                        
+                        <ion-card-title color="danger" class="ion-text-left">
+                          <strong>
+                            {{ publicacion.tituloPublicacion }}
+                          </strong>
+                        </ion-card-title>
+                                  
+                      </ion-card-header>
+        
+                      <ion-card-content class="ion-text-left">
+                        {{ publicacion.inicioPublicacion }}
+                      </ion-card-content>
+                      
+                      <ion-card-content class="ion-text-right">
+                          <strong style="color: #eb445a;">
+                            Leer más
+                          </strong>
+                      </ion-card-content>
+        
+                    </ion-card>
+                  </div>
+                  
+                </ion-col>
+      
+              </ion-row>
+      
+              <ion-row>
+                <br>
+              </ion-row>
+      
+            </ion-grid>
+  
+          <!-- </ion-slide> -->
+        <!-- </ion-slides> -->
+  
+      </div>
+  
+      <!-- Mensaje sin registros en la lista  -->
+      <div *ngIf="!cargandoLista && publicaciones.length === 0">
+          <h6>
+              <ion-list>
+                  <ion-label color="danger">
+                      &nbsp; Sin datos ingresados
+                  </ion-label>
+              </ion-list>
+          </h6>
+      </div>
+  
+      <!-- Mensaje transitorio -->
+      <div *ngIf="cargandoLista">
+          <h6>
+              <ion-list>
+                  <ion-label color="warning">
+                      &nbsp; Buscando...
+                  </ion-label>
+              </ion-list>
+          </h6>
+      </div>
+    
+    </ion-card-content>
+    
+  </ion-card>
+</div>
+
+
+
+
+

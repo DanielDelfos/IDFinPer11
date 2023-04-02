@@ -1,0 +1,227 @@
+<!-- ------------CABECERA DE LA PAGINA -------------------------- -->
+<ion-header traslucent>
+  <app-header tituloPagina="no uso"></app-header>
+</ion-header>
+
+
+<!-- ------------CUERPO DE LA PAGINA -------------------------- -->
+<ion-content padding fullscreen>
+  
+  <!-- ------------Boton flotante-------- -->
+  <app-boton></app-boton>
+  
+  <!-- TITULO DE LA PAGINA ----------------------------------------------->
+  <ion-card class="sinBorde">
+    <ion-card-header color="secondary">
+      <ion-card-title class="ion-text-center">
+        MEDIOS DE PAGO
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  
+
+  <!-- MEDIOS DE PAGO ------------------------------------------------------------- -->
+  <ion-card class="animate__animated animate__backInUp, sinBorde">
+  
+    <!------------ Grilla ------------>
+    <ion-grid fixed>
+        
+        <!-- ------ Registro  1 --------- -->
+        <ion-row>
+            
+            <!-- ------ Columna  1 --------- -->
+            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">  
+                
+                <!-- CARD MEDIOS DE PAGO -->
+                <ion-card class="sinBorde">
+                    <ion-card-header> 
+                        <ion-card-subtitle>MEDIOS DE PAGO DISPONIBLES</ion-card-subtitle>   
+                        
+                        <ion-card-title>
+                          <ion-grid fixed>
+                            <ion-row>
+                                <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                    <br>
+                                    <img style="size: 100%" class="img" src="assets/imagenes/transferencia.png">
+                                </ion-col>
+
+                                <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                    <br>
+                                    <img style="size: 100%" class="img" src="assets/imagenes/tarjetas.png">
+                                </ion-col>   
+
+                                <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                    <br>
+                                    <img style="size: 100%" class="img" src="assets/imagenes/pagoMisCuentas.png">
+                                </ion-col>
+                            </ion-row>
+
+                          </ion-grid>
+  
+                        </ion-card-title>    
+                    </ion-card-header>  
+                
+                </ion-card>
+            </ion-col>
+  
+            <!-- ------ Columna  2 --------- -->
+            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">  
+                
+                <!-- CARD COMPARTI EL CONTRATO -->
+                <ion-card class="sinBorde">
+                    <ion-card-header class="ion-text-center"> 
+                      <ion-card-subtitle>TAMBIEN RECIBIMOS</ion-card-subtitle>   
+  
+                        <ion-card-title>
+                          <div>
+                              <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                              Amex, Banelco y Débito por CBU
+                          </div>
+                          <div>
+                            <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                            Transferencia a cuenta Recaudadora de Cia.
+                          </div> 
+                          <div>
+                            <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                            Mercado Pago y Pago Mis Cuentas
+                          </div> 
+                          <div>
+                            <div>
+                              <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                              Tesorería: Posnet (Visa - Maestro)
+                            </div>
+                            <div>
+                              y cheques propios o endosados por Asegurado
+                            </div>
+                          </div> 
+                        </ion-card-title>
+
+                        <!-- <ion-card-title>
+                          <form method="POST">
+                            <script
+                             src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+                             data-preference-id='<%= global.id %>'>
+                            </script>
+                          </form>
+                        </ion-card-title> -->
+  
+                    </ion-card-header>  
+               
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+          
+  </ion-card>
+  
+  <!-- <form action="/procesar-pago" method="POST">
+    <script
+     src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+     data-preference-id="$$id$$">
+    </script>
+  </form> -->
+
+  <!------------ SECCION BOTON MERCADO PAGO Y FORM. ------------------------------>
+  <ion-card>
+    <!------------ Grilla ------------>
+    <ion-grid fixed>
+
+      <!-- ------ Registro  1 --------- -->
+      <ion-row>
+          <!-- ------ Columna  1 --------- -->
+          <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+              <!-- ------ Card Servicios imagen --------- -->
+              <ion-card class="sinBorde">
+                <ion-card-header>
+
+                  <ion-card-title>
+                    <img class="img" src="assets/imagenes/comercio400x400.png">
+
+                    <hr>
+                    <div>
+                      <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                      Dejanos tu duda y te llamamos
+                    </div>
+                  
+                  </ion-card-title>
+                </ion-card-header>
+
+              </ion-card>
+          </ion-col>
+
+          <!-- ------ Columna  2 --------- -->
+          <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+            <!-- ------ CARD FORMULARIO SOLICITA CUPON O ADHERITE --------- -->
+            <ion-card class="sinBorde">
+
+              <ion-card-header> 
+                <ion-card-subtitle>AVISO DE PAGO O CONSULTA</ion-card-subtitle>
+
+                <ion-card-title>
+
+                  <form autocomplete="on" (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+
+                      <ion-list>
+
+                          <ion-item>
+                              <ion-label position="floating" required>* SU NOMBRE Y APELLIDO</ion-label>
+                              <ion-input type="text" name="interesadoNombre" [(ngModel)]="pago.interesadoNombre" required></ion-input>
+                          </ion-item>
+
+                          <ion-item>
+                              <ion-label position="floating" required>* EMAIL</ion-label>
+                              <ion-input type="email" name="interesadoEmail" [(ngModel)]="pago.interesadoEmail"></ion-input>
+                          </ion-item>
+                          
+                          <ion-item>
+                            <ion-label position="floating">TELEFONO</ion-label>
+                            <ion-input type="text" name="interesadoTelefono" [(ngModel)]="pago.interesadoTelefono"></ion-input>
+                          </ion-item>       
+                      
+                          <ion-item>
+                            <ion-label position="floating" >* COMENTARIOS</ion-label>
+                            <ion-textarea rows="4" cols="20" 
+                              required name="comentarioPago" [(ngModel)]="pago.comentarioPago"
+                              placeholder="Ingrese informaciones adicionales sobre su pago...">
+                            </ion-textarea>
+
+                          </ion-item>
+
+                      </ion-list>
+
+                      <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+                          Enviar
+                      </ion-button>
+                      
+                      <h6>
+                          <!-- Mensaje validando formulario  -->
+                          <ion-note *ngIf="formulario.valid" color="success">&nbsp; Consulta completa, puede enviarla.<br></ion-note>
+                          <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+                          (*) Datos obligatorios.
+                      </h6>
+                      
+                  </form>
+                </ion-card-title>
+
+              </ion-card-header>
+
+            </ion-card>
+
+          </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+  </ion-card>
+
+
+  <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+  <app-footer2></app-footer2>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO --------------------- 
+(no andan botones end y top -->
+<app-footer></app-footer>

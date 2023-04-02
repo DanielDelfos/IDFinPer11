@@ -1,0 +1,189 @@
+<!-- ---------------------------CABECERA DE LA PAGINA ------------------------------->
+
+<!-- Encabezado con publicidad (no menu, no fijo) utilizo -->
+<ion-header #header2>
+    <app-header2></app-header2>
+</ion-header>
+
+<!-- <ion-header traslucent> -->
+    <app-header tituloPagina="Compra"></app-header>
+<!-- </ion-header> -->
+
+
+<!-- ----------------------------CUERPO DE LA PAGINA -------------------------- -->
+<ion-content padding fullscreen>
+
+    <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+        <!------------ Grilla ------------>
+        <ion-grid fixed>
+
+            <!-- ------ Columna 1 --------- -->
+            <ion-row>
+                <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                    <!-- ------------------Encabezado del registro ---------------- -->
+                    <ion-card color="light">
+                        <ion-item color="medium">
+                            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+                            <ion-label>{{ publicacion.tituloPublicacion }}</ion-label>
+
+                            <ion-button (click)="publicacionMore( $event )" expand="block" slot="end">
+                                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                            </ion-button>
+
+                        </ion-item>
+
+                        <ion-card-content>
+                            La publicación se utiliza para noticias en el Sitio Web.
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- ------------------Formulario de modificacion del registro ---------------- -->
+                    <ion-card>
+                        <!-- SFAD{{ producto.descripCortaProd}} {{ producto.cotizadorTipo}} -->
+                        <ion-list>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">* TITULO (max. 30 caracteres)</ion-label>
+                                <!-- <ion-input maxlength="30" type="text" name="tituloPublicacion" [(ngModel)]="publicacion.tituloPublicacion" required></ion-input> -->
+                                <ion-input type="text" name="tituloPublicacion" [(ngModel)]="publicacion.tituloPublicacion" required></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">INICIO PUBLICACION</ion-label>
+                                <ion-textarea rows="5" cols="20" name="inicioPublicacion" [(ngModel)]="publicacion.inicioPublicacion"
+                                    placeholder="Ingrese el texto...">
+                                </ion-textarea>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">RESTO DE LA PUBLICACION</ion-label>
+                                <ion-textarea rows="5" cols="20" name="restoPublicacion" [(ngModel)]="publicacion.restoPublicacion"
+                                    placeholder="Ingrese el texto...">
+                                </ion-textarea>
+                            </ion-item>                   
+
+                            <ion-item color="light">
+                                <ion-grid fixed>
+                                    <ion-row>
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-label for="fileUpload" position="floating">
+                                                <!-- <ion-icon slot="icon-only" name="images"></ion-icon>  -->
+                                                SUBIR IMAGEN <br>
+                                                (ancho 400px, alto 200px)
+                                            </ion-label>
+                                        </ion-col>
+
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-input id="fileUpload" type="file" accept="image/*" name="urlImagenLocalPublic" (change)="newImageUpload($event)" [(ngModel)]="publicacion.urlImagenLocalPublic"></ion-input>
+                                            <!-- no anda ocultando el input con style="display: none;", y clic en la imagen -->
+                                        </ion-col>   
+                                        
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <a href='{{ publicacion.urlImagenPublic }}' target="_blank" style="text-decoration:none">
+                                                <ion-thumbnail>
+                                                    <img class="img" src='{{ publicacion.urlImagenPublic }}'>
+                                                </ion-thumbnail>
+                                            </a>
+                                            <img [src]="newImage">
+                                        </ion-col>  
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">* URL DE LA IMAGEN</ion-label>
+                                <ion-input type="text" name="urlImagenPublic" [(ngModel)]="publicacion.urlImagenPublic" required></ion-input>
+                            </ion-item>
+                            
+                            <ion-item-divider>
+                                <ion-label>
+  
+                                </ion-label>
+                            </ion-item-divider>
+
+                            <!-- <ion-item color="light">
+                                <ion-label position="floating">Estado (En elaboración, Publicada)</ion-label>
+                                <ion-input type="text" name="estadoPublicacion" [(ngModel)]="publicacion.estadoPublicacion"></ion-input>
+                            </ion-item> -->
+
+                            <ion-item  color="light">
+                                <ion-label position="stacked">* ESTADO DE ESTA PUBLICACION</ion-label>
+                                <ion-select interface="popover" placeholder="Indique uno" name="estadoPublicacion" [(ngModel)]="publicacion.estadoPublicacion" required>
+                                    <ion-select-option value="En elaboración">En elaboración</ion-select-option>
+                                    <ion-select-option value="Publicada">Publicada</ion-select-option>
+                                    <ion-select-option value="Cancelada">Cancelada</ion-select-option>
+                                </ion-select>
+                            </ion-item>                               
+
+                            <ion-item color="light">
+                                <ion-label position="floating">Orden</ion-label>
+                                <ion-input type="text" name="ordenPublicacion" [(ngModel)]="publicacion.ordenPublicacion"></ion-input>
+                            </ion-item>
+                                                      
+                            <!-- <ion-item color="light">
+                                <ion-grid fixed>
+                                    <ion-row>
+                                        <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                            <ion-thumbnail>
+                                                <img class="img" src='{{ publicacion.urlImagenPublic }}'>
+                                            </ion-thumbnail>
+                                        </ion-col>
+
+                                        <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                            <ion-label position="floating">URL de la imágen (ancho 400px, alto 200px)</ion-label>
+                                            <ion-input type="text" name="urlImagenPublic" [(ngModel)]="publicacion.urlImagenPublic"></ion-input>
+                                        </ion-col>                                       
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-item> -->
+                        
+                            <ion-item>
+                                <ion-label position="floating">NOTAS INTERNAS</ion-label>
+                                <ion-textarea rows="5" cols="20" name="comentariosPublic" [(ngModel)]="publicacion.comentariosPublic"
+                                    placeholder="Ingrese el texto...">
+                                </ion-textarea>
+                            </ion-item> 
+
+                            <!-- ver si uso type string o text, falta texto largo y numero para orden -->
+
+                        </ion-list>
+
+                        <ion-button color="light" type="submit" expand="full" [disabled]="formulario.invalid">
+                            Guardar
+                        </ion-button>
+
+
+                        <!-- Mensaje validando formulario  -->
+
+                        <ion-note *ngIf="formulario.valid" color="success">&nbsp; Datos validos, recuerde guardar cambios.<br></ion-note>
+                        <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+
+
+                        <!-- Notas finales del formulario  -->
+                        <ion-card-content>
+                            <h6>
+                                Tips:
+                            </h6>
+                            <h6>
+                                (*) Datos obligatorios.
+                            </h6>
+                        </ion-card-content>
+
+                    </ion-card>
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+
+    <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+    <app-footer2></app-footer2>   
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO ---------------------  -->
+<!-- no andan botones end y top --> 
+<app-footer></app-footer>

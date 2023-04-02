@@ -1,0 +1,20 @@
+/* sin borde */
+.sinBorde{
+    box-shadow: none !important;
+    text-align: center;
+}
+/* Logo en Header y otros*/
+.sinMargen{
+    margin: 0px !important;
+}
+.cardBarraPromo{
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    --background: none;
+    background-color: transparent !important;
+    background-image: url("../../../assets/imagenes/barraPromos.png") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;     
+}

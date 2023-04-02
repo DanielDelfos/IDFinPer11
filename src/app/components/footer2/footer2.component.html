@@ -1,0 +1,198 @@
+
+<!------------ PIE DE PAGINA NO FIJO  ------------>
+<ion-card style="background-color: #FFFFFF; width: 100%; border: 0ch; 
+            box-shadow: none; margin: 0ch;">
+            
+  <!------------ Grilla ------------>
+  <ion-grid fixed>
+
+    <!-- ------ Registro  1 --------- -->
+    <ion-row>
+
+        <!-- ------ Columna  1 INDICE DEL SITIO ------------------------ -->
+        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+
+            <!-- ------ Card  --------- -->
+            <ion-card style="background-color: #FFFFFF;" class="sinBorde">
+
+            <ion-card-content class="ion-text-left">
+                <div [routerLink]="['/inicio']">
+                    <!-- <ion-icon color="dark" slot="start" name="home-outline"></ion-icon> -->
+                    Inicio
+                    <!-- <i class="fas fa-chevron-right"></i> -->
+                </div>
+                <div [routerLink]="['/productos']">
+                    Productos
+                    <!-- <i class="fas fa-chevron-right"></i> -->
+                </div> 
+                <div [routerLink]="['/planes']">
+                    Planes
+                    <!-- <i class="fas fa-chevron-right"></i> -->
+                </div> 
+                <div [routerLink]="['/publicaciones']">
+                    Publicaciones
+                    <!-- <i class="fas fa-chevron-right"></i> -->
+                </div>  
+                <div [routerLink]="['/cupones']">
+                    Beneficios Exclusivos
+                    <!-- <i class="fas fa-chevron-right"></i> -->
+                </div>    
+                <div>&nbsp; </div>  
+                <div [routerLink]="['/nosotros']">
+                    Nosotros
+                    <!-- <i class="fas fa-chevron-right"></i> -->
+                </div>     
+                <div [routerLink]="['/consultanos']">
+                    <!-- <ion-icon color="dark" slot="start"  name="chatbox-ellipses-outline"></ion-icon> -->
+                    Consultanos
+                <!-- <i class="fas fa-chevron-right"></i> -->
+                </div> 
+                      
+            </ion-card-content>
+            
+            </ion-card>
+        </ion-col>
+
+        <!-- ------ Columna  2 DIRECCION Y REDES SOCIALES -------------------- -->
+        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+
+            <!-- ------ Card Direccion --------- -->
+            <ion-card style="background-color: #FFFFFF;" class="sinBorde">
+                <ion-card-title class="ion-text-center">
+                    <ion-text class="fuenteOrue" style="font-size:150%">MARWEK</ion-text>
+                    <br>
+                    <ion-text  color="primary">MARKETING</ion-text>
+
+                    <!-- <img class="img" src="assets/imagenes/logoNombre.png"> -->
+                </ion-card-title>
+
+                <ion-card-content class="ion-text-center">
+                    
+                    <div>
+                        <a href="https://goo.gl/maps/MDcmtpSz9aiRSnF88" target="_blank" style="text-decoration:none">
+                            <ion-text color="primary">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </ion-text>
+                            <ion-text color="dark">
+                                &nbsp; España 1130
+                            </ion-text>
+                            <div style="color: black;">
+                                (5220) Jésus María - Córdoba
+                            </div>
+                        </a>
+                    </div>  
+                    
+                    <div>
+                        <a href="mailto:consultas@marwek.com" target="_blank" style="text-decoration:none">
+                            <ion-text color="dark">
+                                <!-- <i class="fas fa-envelope"></i> -->
+                                consultas@marwek.com
+                            </ion-text>
+                        </a>
+                    </div>  
+                    <div>
+                        <a href="https://wa.me/5493525640546/?text=Hola%20quisiera%20recibir%20asesoramiento%20sobre%20marketing.%20Muchas%20gracias." target="_blank" style="text-decoration:none">
+                            <ion-text color="success">
+                                <ion-icon size="small" name="logo-whatsapp"></ion-icon>
+                            </ion-text>
+                            <ion-text color="dark">
+                                Consultas: 3525 64-0546
+                            </ion-text>
+                        </a>                            
+                    </div> 
+                    <br>    
+                    <div>
+                        <ion-grid fixed>
+                            <ion-row>
+                                <ion-col>
+
+                                    <a href="https://wa.me/5493525640546/?text=Hola%20quisiera%20recibir%20asesoramiento%20sobre%20marketing.%20Muchas%20gracias." target="_blank" style="text-decoration:none">
+                                        <ion-icon color="dark" size="large" name="logo-whatsapp"></ion-icon>
+                                    </a>
+                                </ion-col>
+                                <ion-col>
+                                    <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                                    <a href="https://www.facebook.com/Marwek" target="_blank" style="text-decoration:none">
+                                        <ion-icon color="dark" size="large" name="logo-facebook"></ion-icon>
+                                    </a>
+                                </ion-col>
+                                <ion-col>
+                                    <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                                    <a href="https://www.instagram.com/marwek/" target="_blank" style="text-decoration:none">
+                                        <ion-icon color="dark" size="large" name="logo-instagram"></ion-icon>
+                                    </a>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        
+                    </div> 
+                    
+                </ion-card-content>
+                
+            </ion-card>
+
+        </ion-col>
+
+        <!-- ------ Columna  3 CERTIFICACIONES ----------------------------- -->
+        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+
+            <!-- ------ Card Direccion --------- -->
+            <ion-card style="background-color: #FFFFFF;" class="sinBorde">
+            <ion-card-subtitle></ion-card-subtitle>
+            <ion-card-content>
+
+                <ion-text class="ion-text-right">
+                    <div>Gestión de Redes Sociales</div>
+                    <div>Extrategias de Comercialización</div>
+                    <div>Marketing Digital</div>
+                    <div>Desarrollo Web y de Apps</div>
+                    <div>Organización de Eventos</div>
+                    <div>Registro de Marcas</div>
+                    <div>Encuestas</div>
+                    <div>Lanzamiento de Productos</div>
+                </ion-text>
+
+            </ion-card-content>
+                
+            </ion-card>
+
+        </ion-col>
+
+        <!-- personalizar los iconos -->
+        <!--         <span style="font-size: 48px; color: Dodgerblue;">
+            <i class="fas fa-whatsapp"></i>
+        </span>  --> 
+    </ion-row>
+    
+    <!-- PIE FINAL ---------------------------------------- -->
+    <ion-row  class="sinMargen">
+        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10" class="sinMargen">
+            <h6 class="ion-text-center">
+                <ion-text>Marwek. Copyright &nbsp;</ion-text>
+                <i class="far fa-copyright"></i>
+                <ion-text>&nbsp; 2021. V73</ion-text>
+            </h6>
+        </ion-col>   
+    
+        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10" class="sinMargen">
+            <h6 color="primary" [routerLink]="['/politicas']" class="sinMargen, ion-text-center">
+                <ion-text>Políticas de privacidad &nbsp;</ion-text>
+                <!-- <i class="fas fa-chevron-right"></i> -->
+            </h6>
+        </ion-col>
+    
+        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10" class="sinMargen">
+            <h6 color="primary" class="sinMargen, ion-text-center">
+                <ion-text>Desarrollado por</ion-text>
+                <a href="http://marwek.com/" target="_blank" style="text-decoration:none">
+                    <ion-text color="secondary">
+                        Marketing Marwek
+                    </ion-text> 
+                </a>
+            </h6>
+        </ion-col>        
+    
+    </ion-row>
+
+  </ion-grid>
+</ion-card>

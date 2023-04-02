@@ -1,0 +1,140 @@
+<app-header tituloPagina="Indicador"></app-header>
+
+<ion-content padding fullscreen>
+
+    <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+        <!------------ Grilla ------------>
+        <ion-grid fixed>
+
+            <!-- ------ Columna 1 --------- -->
+            <ion-row>
+                <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                    <!-- ------------------Encabezado del registro ---------------- -->
+                    <ion-card>
+                        <ion-item color="medium">
+                            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+                            <ion-label>{{ indicador.nombreIndicador }}</ion-label>
+
+                            <ion-button (click)="indicadorMore( $event )" expand="block" slot="end">
+                                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                            </ion-button>
+
+                        </ion-item>
+
+                        <ion-card-content>
+                            El Indicador es utiliza en el Sitio Web Público, realice los cambios en la siguiente sección.
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- ------------------Formulario de modificacion del registro ---------------- -->
+                    <ion-card>
+                        <!-- SFAD{{ indicador.descripCortaProd}} {{ indicador.cotizadorTipo}} -->
+                        <ion-list>
+
+                            <ion-item>
+                                <ion-label position="floating">* NOMBRE </ion-label>
+                                <ion-input type="text" name="nombreIndicador" [(ngModel)]="indicador.nombreIndicador" required></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Titulo en la tarjeta</ion-label>
+                                <ion-input type="text" name="tituloTarjetaInd" [(ngModel)]="indicador.tituloTarjetaInd"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Subtítulo en la tarjeta</ion-label>
+                                <ion-input type="text" name="subTituloTarjInd" [(ngModel)]="indicador.subTituloTarjInd"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Grupo</ion-label>
+                                <ion-input type="text" name="grupoIndicador" [(ngModel)]="indicador.grupoIndicador"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Orden</ion-label>
+                                <ion-input type="text" name="ordenIndicador" [(ngModel)]="indicador.ordenIndicador"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Entidad (para link al listado)</ion-label>
+                                <ion-input type="text" name="entidadIndicador" [(ngModel)]="indicador.entidadIndicador"></ion-input>
+                            </ion-item>
+                            
+                            <ion-item>
+                                <ion-label position="floating">Valor Total</ion-label>
+                                <ion-input type="string" name="valorTotalIndicador" [(ngModel)]="indicador.valorTotalIndicador"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Valor Nuevos</ion-label>
+                                <ion-input type="string" name="valorNuevosInd" [(ngModel)]="indicador.valorNuevosInd"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Fecha actualizacion</ion-label>
+                                <ion-input type="date" name="fechaActInd" [(ngModel)]="indicador.fechaActInd"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Estado (Vigente - No vigente)</ion-label>
+                                <ion-input type="string" name="estadoIndicador" [(ngModel)]="indicador.estadoIndicador"></ion-input>
+                            </ion-item>
+
+                            <!-- Pasar a select, y que admita solo los tipos del ngif del componente cotizador -->
+                            <ion-item>
+                                <ion-label position="floating">Notas</ion-label>
+                                <ion-input type="string" name="notasIndicador" [(ngModel)]="indicador.notasIndicador"></ion-input>
+                            </ion-item>
+
+                            <!-- Pasar a select, y que admita solo los tipos del ngif del componente cotizador -->
+
+<!--                             <ion-item>
+                                <ion-label position="stacked">Género</ion-label>
+                                <ion-select placeholder="Indique uno">
+                                    <ion-select-option value="f">Mujer</ion-select-option>
+                                    <ion-select-option value="m">Hombre</ion-select-option>
+                                </ion-select>
+                            </ion-item> -->
+
+                        </ion-list>
+
+                        <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+                            Guardar
+                        </ion-button>
+
+
+                        <!-- Mensaje validando formulario  -->
+
+                        <ion-note *ngIf="formulario.valid" color="success">&nbsp; Datos validos, recuerde guardar cambios.<br></ion-note>
+                        <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+
+
+                        <!-- Notas finales del formulario  -->
+                        <ion-card-content>
+                            <h6>
+                                Tips:
+                            </h6>
+                            <h6>
+                                (*) Datos obligatorios.
+                            </h6>
+                        </ion-card-content>
+
+                    </ion-card>
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+
+    <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+    <app-footer2></app-footer2>   
+        
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO ---------------------  -->
+<!-- no andan botones end y top --> 
+<app-footer></app-footer>

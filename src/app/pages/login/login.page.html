@@ -1,0 +1,341 @@
+<!-- ------------CABECERA DE LA PAGINA -------------------------- -->
+<ion-header>
+    <ion-toolbar>
+        <ion-title text-capitalize>Aplicación Libro IVA v1</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding fullscreen>
+
+    <ion-slides pager=" true " #slidePrincipal>
+        <!------------ SLIDE BIENVENIDO  ------------>
+        <ion-slide>
+
+            <!------------ Grilla ------------>
+            <ion-grid fixed>
+
+                <!-- ------ Columna 1 --------- -->
+                <ion-row>
+                    <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                        <!-- <ion-col size-xl="12 " size-lg="12 " size-md="12 " size-sm="12 " size-xs="12 "> 
+                                <ion-col size="12 " size-lg="3 " size-md="4 " size-sm="6 " size-xs="12 "> No anda-->
+
+                        <!-- ------ Card Bienvenido --------- -->
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-subtitle>Bienvenido</ion-card-subtitle>
+                                <ion-card-title>APP Libro IVA V1</ion-card-title>
+                                <img class="img" src="assets/imagenes/bienvenido.png">
+                            </ion-card-header>
+
+                            <ion-card-content>
+                                Software de gestión administrativa para el control y elaboración del Libro IVA Digital.
+                            </ion-card-content>
+
+                        </ion-card>
+
+                    </ion-col>
+
+                    <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                        <!-- ------ Form ir al Login --------- -->
+                        <form (ngSubmit)="mostrarLogin( formLogin )" #formLogin="ngForm">
+
+                            <ion-card>
+                                <ion-card-header>
+                                    <ion-card-subtitle>Ingreso a la app</ion-card-subtitle>
+                                </ion-card-header>
+
+                                <ion-button type="submit" color="primary" shape="round">
+                                    <ion-icon slot="start" name="person-outline"></ion-icon>
+                                    Login
+                                </ion-button>
+                                <ion-card-content>
+                                    Requiere usuario habilitado y su contraseña.
+                                </ion-card-content>
+                            </ion-card>
+                        </form>
+
+                        <!-- ------ Form ir a Info --------- -->
+                        <form (ngSubmit)="mostrarInfo( formInfo )" #formInfo="ngForm">
+                            <ion-card>
+                                <ion-card-header>
+                                    <ion-card-subtitle>Sobre nuestra app</ion-card-subtitle>
+                                </ion-card-header>
+
+                                <ion-button type="submit" color="tertiary" shape="round">
+                                    <ion-icon slot="start" name="information-outline"></ion-icon>
+                                    Info
+                                </ion-button>
+
+                                <ion-card-content>
+                                    Información y ayuda inicial sobre la app.
+                                </ion-card-content>
+                            </ion-card>
+
+                            <!-- ------ Card copyright --------- -->
+                            <ion-card>
+                                <h6>
+                                    <ion-text>&nbsp; </ion-text>
+                                    <span style="color:cornflowerblue;">
+                                      <i class="fas fa-book"></i>
+                                  </span>
+                                    <ion-text>&nbsp; Software Libro IVA v1. Copyright &nbsp;</ion-text>
+                                    <i class="far fa-copyright"></i>
+                                    <ion-text>&nbsp; 2020 &nbsp;</ion-text>
+                                    <a href="http://www.delfosidec.org" target="_blank">Fundación Delfos IDEC</a>
+                                </h6>
+
+                            </ion-card>
+                        </form>
+
+                    </ion-col>
+                </ion-row>
+
+
+            </ion-grid>
+
+        </ion-slide>
+
+        <!------------ SLIDE INFO DEL SISTEMA  ------------>
+        <ion-slide>
+
+            <!------------ Grilla ------------>
+            <ion-grid fixed>
+
+                <!-- ------ Columna 1 --------- -->
+                <ion-row>
+                    <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                        <!-- <ion-col size-xl="12 " size-lg="12 " size-md="12 " size-sm="12 " size-xs="12 "> 
+                                <ion-col size="12 " size-lg="3 " size-md="4 " size-sm="6 " size-xs="12 "> No anda-->
+
+                        <!-- ------ Card Bienvenido --------- -->
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-subtitle>App Libro IVA v1</ion-card-subtitle>
+                                <ion-card-title>Información</ion-card-title>
+                            </ion-card-header>
+
+                            <ion-card-content>
+                                Software de gestión administrativa para el control y elaboración del Libro IVA Digital. Documentación en elaboración.
+                            </ion-card-content>
+
+                        </ion-card>
+
+                    </ion-col>
+
+                    <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                        <!-- ------ Form ir al Login --------- -->
+                        <form (ngSubmit)="mostrarLogin( formLogin2 )" #formLogin2="ngForm">
+
+                            <ion-card>
+                                <ion-card-header>
+                                    <ion-card-subtitle>Ingreso a la app</ion-card-subtitle>
+                                </ion-card-header>
+
+                                <ion-button type="submit" color="primary" shape="round">
+                                    <ion-icon slot="start" name="person-outline"></ion-icon>
+                                    Login
+                                </ion-button>
+                                <ion-card-content>
+                                    Requiere usuario habilitado y su contraseña.
+                                </ion-card-content>
+                            </ion-card>
+                        </form>
+
+                        <!-- ------ Form volver a Bienvenido --------- -->
+                        <form (ngSubmit)="mostrarBienvenido( formBienvenido )" #formBienvenido="ngForm">
+                            <ion-card>
+                                <ion-card-header>
+                                    <ion-card-subtitle>Bienvenido a nuestra app</ion-card-subtitle>
+                                </ion-card-header>
+
+                                <ion-button type="submit" color="tertiary" shape="round">
+                                    <ion-icon slot="start" name="home-outline"></ion-icon>
+                                    Inicio
+                                </ion-button>
+
+                                <ion-card-content>
+                                    Volver a la página de inicio.
+                                </ion-card-content>
+                            </ion-card>
+
+                            <!-- ------ Card copyright --------- -->
+                            <ion-card>
+                                <h6>
+                                    <ion-text>&nbsp; </ion-text>
+                                    <span style="color:cornflowerblue;">
+                                      <i class="fas fa-book"></i>
+                                  </span>
+                                    <ion-text>&nbsp; Software Libro IVA v1. Copyright &nbsp;</ion-text>
+                                    <i class="far fa-copyright"></i>
+                                    <ion-text>&nbsp; 2020 &nbsp;</ion-text>
+                                    <a href="http://www.delfosidec.org" target="_blank">Fundación Delfos IDEC</a>
+                                </h6>
+
+                            </ion-card>
+                        </form>
+
+                    </ion-col>
+                </ion-row>
+
+
+            </ion-grid>
+
+        </ion-slide>
+
+        <!------------ SLIDE LOGIN NUEVO  ------------>
+        <ion-slide>
+
+            <!------------ Grilla ------------>
+            <ion-grid fixed>
+
+                <!-- ------ Columna 1 --------- -->
+                <ion-row>
+                    <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                        <!-- <ion-col size-xl="12 " size-lg="12 " size-md="12 " size-sm="12 " size-xs="12 "> 
+                                <ion-col size="12 " size-lg="3 " size-md="4 " size-sm="6 " size-xs="12 "> No anda-->
+
+                        <!-- ------ Card Bienvenido --------- -->
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-subtitle>App Libro IVA v1</ion-card-subtitle>
+                                <ion-card-title>Login</ion-card-title>
+                            </ion-card-header>
+
+                            <ion-card-content>
+                                Ingrese los datos proporcionados para su ingreso.
+                            </ion-card-content>
+
+                        </ion-card>
+
+                        <form (ngSubmit)="login( formulario )" #formulario="ngForm">
+                            <!-- ------------------Formulario de modificacion del registro ---------------- -->
+                            <ion-card>
+                                <ion-list>
+
+                                    <ion-item>
+                                        <ion-label position="floating">* Email</ion-label>
+                                        <ion-input type="email" name="email" [(ngModel)]="usuario.email" required email></ion-input>
+                                    </ion-item>
+
+                                    <ion-item>
+                                        <ion-label position="floating">* Contraseña</ion-label>
+                                        <ion-input type="password" name="password" [(ngModel)]="usuario.password" required minlength="6"></ion-input>
+                                    </ion-item>
+
+                                    <ion-item>
+                                        <ion-checkbox name="recordarme" [(ngModel)]="recordarme" slot="start"></ion-checkbox>
+                                        <ion-label>Recordar el usuario</ion-label>
+                                    </ion-item>
+
+                                </ion-list>
+
+                                <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+                                    Ingresar
+                                </ion-button>
+
+
+                                <!-- Mensaje validando formulario  -->
+
+                                <ion-note *ngIf="formulario.valid" color="success">&nbsp; Datos completos, ingrese para validarlos.<br></ion-note>
+                                <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+
+
+                                <!-- Notas finales del formulario  -->
+                                <ion-card-content>
+                                    <h6>
+                                        Tips:
+                                    </h6>
+                                    <h6>
+                                        (*) Datos obligatorios.
+                                    </h6>
+                                    <h6>
+                                        El email debe estar completo, incluyendo ambos lados del @.
+                                    </h6>
+                                    <h6>
+                                        La contraseña debe contener al menos 6 caracteres.
+                                    </h6>
+                                </ion-card-content>
+
+                            </ion-card>
+                        </form>
+
+                    </ion-col>
+
+                    <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                        <!-- ------ Form volver a Bienvenido --------- -->
+                        <form (ngSubmit)="mostrarBienvenido( formBienvenido2 )" #formBienvenido2="ngForm">
+                            <ion-card>
+                                <ion-card-header>
+                                    <ion-card-subtitle>Bienvenido a nuestra app</ion-card-subtitle>
+                                </ion-card-header>
+
+                                <ion-button type="submit" color="tertiary" shape="round">
+                                    <ion-icon slot="start" name="home-outline"></ion-icon>
+                                    Inicio
+                                </ion-button>
+
+                                <ion-card-content>
+                                    Volver a la página de inicio.
+                                </ion-card-content>
+                            </ion-card>
+                        </form>
+
+                        <!-- ------ Form ir a Info --------- -->
+                        <form (ngSubmit)="mostrarInfo( formInfo2 )" #formInfo2="ngForm">
+                            <ion-card>
+                                <ion-card-header>
+                                    <ion-card-subtitle>Sobre nuestra app</ion-card-subtitle>
+                                </ion-card-header>
+
+                                <ion-button type="submit" color="tertiary" shape="round">
+                                    <ion-icon slot="start" name="information-outline"></ion-icon>
+                                    Info
+                                </ion-button>
+
+                                <ion-card-content>
+                                    Información y ayuda inicial sobre la app.
+                                </ion-card-content>
+                            </ion-card>
+
+                            <!-- ------ Card copyright --------- -->
+                            <ion-card>
+                                <h6>
+                                    <ion-text>&nbsp; </ion-text>
+                                    <span style="color:cornflowerblue;">
+                                      <i class="fas fa-book"></i>
+                                  </span>
+                                    <ion-text>&nbsp; Software Libro IVA v1. Copyright &nbsp;</ion-text>
+                                    <i class="far fa-copyright"></i>
+                                    <ion-text>&nbsp; 2020 &nbsp;</ion-text>
+                                    <a href="http://www.delfosidec.org" target="_blank">Fundación Delfos IDEC</a>
+                                </h6>
+
+                            </ion-card>
+                        </form>
+
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+        </ion-slide>
+
+    </ion-slides>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA ------------- --------- 
+(no anda slot="end" -->
+<ion-footer>
+    <ion-button (click)="ScrollStart()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="chevron-up-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="ScrollEnd()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="chevron-down-outline"></ion-icon>
+    </ion-button>
+</ion-footer>
+
+<!-- (no anda llamar las funciones desde el componente)
+<app-footer>
+</app-footer> -->

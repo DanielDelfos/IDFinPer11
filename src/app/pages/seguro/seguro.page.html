@@ -1,0 +1,171 @@
+<!-- ------------CABECERA DE LA PAGINA -------------------------- -->
+<ion-header traslucent>
+  <app-header tituloPagina="no uso"></app-header>
+</ion-header>
+
+
+<!-- ------------CUERPO DE LA PAGINA -------------------------- -->
+<ion-content padding fullscreen>
+
+
+  <!-- ------------Boton flotante-------- -->
+  <app-boton></app-boton>
+  
+
+  <!-- TITULO DE LA PAGINA ----------------------------------------------->
+  <ion-card>
+    <ion-card-header color="secondary">
+      <ion-card-title class="ion-text-center">
+        {{ producto.nombreProducto }}
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+
+  <!------------ FORM. COTIZADOR (falta parametro del tipo de cotizador y no el nombre del seguro) ------------------------------------>
+  <app-cotizador [nombreProducto]="producto.nombreProducto"
+                 [cotizadorTipo]="producto.cotizadorTipo"
+  ></app-cotizador> 
+
+
+  <!------------ IMAGEN Y DATOS PRINCIPALES ------------------------------------->
+  <ion-card class="sinBorde">
+    <!------------ Grilla ------------>
+    <ion-grid fixed>
+
+      <!-- ------ Registro  1 --------- -->
+      <ion-row>
+          <!-- ------ Columna  1 --------- -->
+          <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+            <!-- ------ Card  imagen --------- -->
+            <ion-card class="sinBorde">
+              <ion-card-header>
+
+                <ion-card-title>
+
+                  <div *ngIf="producto.categoriaProd != 'kits'">
+                    <img src='{{ producto.urlImagenProd }}'>
+                  </div>
+
+                  <div *ngIf="producto.categoriaProd == 'kits'">
+                    <span style="font-size: 36px; color: Mediumslateblue;">
+                      <i class='{{ producto.urlImagenProd }}'></i>
+                    </span>
+
+                    <div>
+                      {{ producto.descripCortaProd }}
+                    </div>
+                  </div>
+
+                  <!-- Alerta Promociones, si aplica -->
+                  <ion-list *ngIf="producto.esPromocionProd == 'true'">
+                    <ion-list-header color="danger">
+
+                      <ion-label class="ion-text-center">
+                        <strong>
+                          PROMO DESDE ${{ producto.precioActualProd }}
+                          <!-- | currency:'CAD':'symbol-narrow':'4.0-0' anda pero tiene punto como separador de miles -->
+                        </strong>
+                      </ion-label>
+                      
+                    </ion-list-header>
+                  </ion-list>
+                
+                </ion-card-title>
+              </ion-card-header>
+
+            </ion-card>
+          </ion-col>
+
+          <!-- ------ Columna  2 --------- -->
+          <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+            <!-- ------ Card  otros datos  --------- -->
+            <ion-card class="sinBorde">
+              <ion-card-header>
+
+                <ion-card-title *ngIf="producto.categoriaProd != 'kits'">
+                    {{ producto.descripCortaProd }}
+                </ion-card-title>
+
+              </ion-card-header>
+
+              <ion-card-content>
+                {{ producto.descripLargaProd }}
+              </ion-card-content>
+
+            </ion-card>
+
+          </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+  </ion-card>
+  
+  <!------------ IMAGEN Y FORM. CONSULTA--------------------------------------->
+  <ion-card class="sinBorde">
+    <!------------ Grilla ------------>
+    <ion-grid fixed>
+
+      <!-- ------ Registro  1 --------- -->
+      <ion-row>
+          <!-- ------ Columna  1 --------- -->
+          <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+              <!-- ------ Card  imagen --------- -->
+              <ion-card class="sinBorde">
+                <ion-card-header>
+
+                  <ion-card-title>
+                    <img class="img" src="assets/imagenes/contacto400x400.png">
+
+                    <hr>
+
+                    <div>
+                      <ion-icon slot="start" name="checkmark-outline" color="success"></ion-icon>
+                      Contamos con otros servicios exclusivos para vos
+                    </div>
+                  
+                  </ion-card-title>
+                </ion-card-header>
+
+              </ion-card>
+          </ion-col>
+
+          <!-- ------ Columna  2 --------- -->
+          <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+            <!-- ------ CARD FORMULARIO SOLICITA CUPON O ADHERITE --------- -->
+            <ion-card class="sinBorde">
+
+              <ion-card-header> 
+                  <ion-card-subtitle>O DEJANOS TU CONSULTA</ion-card-subtitle>
+
+                  <ion-card-title>
+                      <!-- Componente formulario consulta -->
+                      <app-form-consulta [vuelveApagina]="'empresas'"
+                                          [consultaDesde]="'Empresas'">
+                      </app-form-consulta>
+
+                  </ion-card-title>
+              </ion-card-header>
+
+            </ion-card>
+
+          </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+  </ion-card>
+
+  <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+  <app-footer2></app-footer2>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO --------------------- 
+(no andan botones end y top -->
+<app-footer></app-footer>

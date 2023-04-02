@@ -1,0 +1,55 @@
+<!-- ------------CABECERA DE LA PAGINA -------------------------- -->
+
+<!-- Encabezado con publicidad (no menu, no fijo) utilizo directiva-->
+<ion-header #header2>
+  <app-header2></app-header2>
+</ion-header>
+
+<!-- Menu hamburguesa -->
+<app-header tituloPagina="Compra"></app-header>
+
+<!-- <ion-header traslucent>
+  <app-header tituloPagina="no uso"></app-header>
+</ion-header> -->
+
+
+<!-- ------------CUERPO DE LA PAGINA -------------------------- -->
+<!-- no anda la directiva  appHideHeader2 [header2]="header2" -->
+<ion-content padding fullscreen  
+           scrollEvents="true">
+
+  <!-- ------------Boton flotante-------- -->
+  <app-boton></app-boton>
+
+  <!-- Marca de inicio -->
+  <h4 id='labelInicio'></h4>
+
+  <!------------------- TITULO DE LA PAGINA  ----------------------------- -->
+  <ion-card class="cardBarraPromo">
+    <ion-card-header>
+        <ion-card-subtitle style="font-size:150%; color: white;">
+            <br>
+            Ofertas Top
+        </ion-card-subtitle>
+        <ion-card-title>
+            <div style="font-size:250%; font-weight: bold; color: white;">
+                Promociones Exclusivas
+            </div>
+        </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <!-- LISTAR PRODUCTOS (COMPONENTE) -->
+  <app-producto-list [llamadoDesde]="'promociones'">
+  </app-producto-list>
+
+
+  <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+  <app-footer2></app-footer2>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO --------------------- 
+(no andan botones end y top -->
+<app-footer></app-footer>
+

@@ -1,0 +1,112 @@
+<!-- ---------------------------CABECERA DE LA PAGINA ------------------------------->
+
+<!-- Encabezado con publicidad (no menu, no fijo) utilizo -->
+<ion-header #header2>
+    <app-header2></app-header2>
+</ion-header>
+
+<!-- <ion-header traslucent> -->
+    <app-header tituloPagina="Compra"></app-header>
+<!-- </ion-header> -->
+
+
+<!-- ----------------------------CUERPO DE LA PAGINA -------------------------- -->
+<ion-content padding fullscreen scrollEvents="true" appHideHeader2 [header2]="header2">
+
+    <!-- ------------Boton flotante-------- -->
+    <app-boton></app-boton>
+
+    <!-- Es ambiente real: {{ entornoProduccion }} -- -->
+
+    <!-- IMAGEN PRINCIPAL INICIAL (antes slide principal, ver bk 11/10)--------------------------------------------------- -->
+    <!-- class="imagenDetras1" class="cardFull -->
+
+    <ion-card>
+        <!------------ Grilla ------------>
+        <ion-grid fixed traslucent>
+
+            <!-- ------ 1er RENGLON --------- -->
+            <ion-row traslucent>
+
+                <!-- ------ Card unico --------- -->
+                <ion-card traslucent class="transparenteAbajo">
+                    <ion-card-content> 
+                                <ion-text color="primary" class="ion-text-left">
+                                    <div style="font-size: 30px; font-family:Arial, Helvetica, sans-serif; font-weight: 100;"> 
+                                        CRM MARWEK - ADMINISTRADOR DE CLIENTES -<br>
+                                        <br>
+                                        V73 - ORUE & GODOY SEGUROS  <br>  
+                                        Software de administración de relaciones con el cliente
+                                    </div>
+                                </ion-text>
+                    </ion-card-content>
+                    </ion-card>
+
+            </ion-row>
+
+        </ion-grid>
+    
+    </ion-card>
+
+    
+    <!-- LISTAR INDICADORES -------------------- -->
+    <app-indicadores-lista [llamadoDesde]="'inicio'">
+    </app-indicadores-lista>
+
+
+    <!-- RECIBI NOVEDADES ---------------------------------------------------------------- -->
+    <ion-card color="dark"
+        style="width: 100%; border: 0ch; box-shadow: none; margin: 0ch;">
+
+        <ion-card-header> 
+            <ion-card-title class="ion-text-center">
+                <br>
+                <ion-text style="font-size:130%; color: white;">
+                    Suscribite a nuestras novedades
+                </ion-text>
+
+                <form (ngSubmit)="guardarOfertas( formOfertas )" #formOfertas="ngForm">
+
+                    <ion-grid fixed>
+                        <ion-row>
+                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                <ion-item>
+                                    <ion-label color="light" position="floating">Mail</ion-label>
+                                    <ion-input autocomplete="email" type="email" name="tmpEmail" [(ngModel)]="tmpEmail" required></ion-input>
+                                </ion-item>
+                            </ion-col>
+ 
+                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                <ion-item>
+                                    <ion-label color="light" position="floating">Celular</ion-label>
+                                    <ion-input autocomplete="tel" type="text" name="tmpCelular" [(ngModel)]="tmpCelular"></ion-input>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                <!-- no valido el form -->
+                                <ion-button color="primary" type="submit" expand="full">
+                                    <div style="font-weight: bold;">
+                                        Suscríbete
+                                        <br>
+                                    </div>
+                                    <br>
+                                </ion-button>
+                               </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    
+                </form>
+                
+            </ion-card-title>
+        </ion-card-header>
+    </ion-card>
+
+
+    <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+    <app-footer2></app-footer2>   
+        
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO ---------------------  -->
+<!-- no andan botones end y top --> 
+<app-footer></app-footer>

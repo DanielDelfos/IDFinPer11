@@ -1,0 +1,100 @@
+<app-header tituloPagina="IVA Compras"></app-header>
+
+<ion-content padding fullscreen>
+
+    <!-- ------------Boton agregar o nuevo-------- -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/ivacompras/nuevo">
+            <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+
+    </ion-fab>
+
+    <!-- Cartel cargando (cambiar por mensaje espera de ionic )-->
+    <!--     <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">Consultando base de datos</h4>
+        <p>
+            <i class="fas fa-sync-alt fa-spin fa-2x"></i>
+        </p>
+        <p class="mb-0">
+            Espere por favor
+        </p>
+
+    </div> -->
+
+
+    <!------------ Tabla ------------>
+    <ion-grid fixed>
+
+        <!-- ------ ?? --------- -->
+        <ion-row>
+            <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                <ion-item routerLink="/ivacompra" detail>
+                    <ion-label>Compra 1 </ion-label>
+                </ion-item>
+
+
+                <ion-item routerLink="/ivacompra" detail>
+                    <ion-label>Compra 2 </ion-label>
+                </ion-item>
+
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <ion-list *ngFor="let ivaCompra of ivaCompras; let i = index">
+
+        <ion-item routerLink="/inicio" detail>
+            <ion-label>{{ ivaCompra.interesado }}</ion-label>
+        </ion-item>
+
+    </ion-list>
+
+    <!-- TABLA -------*ngIf="!cargando && ivaCompras.length > 0" -------- -->
+    <table class="table table-hover mt-3 animated fadeIn faster">
+        <thead>
+            <tr>
+                <!-- <th scope="col">Orden</th> -->
+                <!-- <th scope="col">ID Interno</th> -->
+                <th scope="col">INTERESADO</th>
+                <th scope="col">PRODUCTO</th>
+                <th scope="col">FECHA CONSULTA</th>
+                <th scope="col">ESTADO</th>
+                <th scope="col">SIGUIENDO</th>
+                <th scope="col">OTROS SEGUIM.</th>
+                <th scope="col">HERRAMIENTAS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let consulta of ivaCompras; let i = index">
+                <!-- --- Columnas --- -->
+                <!-- <th scope="row">{{ i + 1 }}</th> -->
+                <td>{{ consulta.idConsulta }}</td>
+                <td>{{ consulta.interesado }}</td>
+                <td>{{ consulta.producto }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA ------------- --------- -->
+<ion-footer>
+
+    <h6>
+        <ion-text>&nbsp; </ion-text>
+        <span style="color:cornflowerblue;">
+            <i class="fas fa-book"></i>
+        </span>
+        <ion-text>&nbsp; Software Libro IVA v1. Copyright &nbsp;</ion-text>
+        <i class="far fa-copyright"></i>
+        <ion-text>&nbsp; 2020 &nbsp;</ion-text>
+        <a href="http://www.delfosidec.org" target="_blank">Fundación Delfos IDEC</a>
+    </h6>
+
+</ion-footer>
+<!-- No anda bien -->
+<!-- <app-footer></app-footer> -->

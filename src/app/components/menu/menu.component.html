@@ -1,0 +1,130 @@
+<ion-menu side="start" menuId="primerMenu" contentId="principal" >
+
+    <ion-header>
+        <ion-toolbar color="primary">
+
+            <ion-title>
+                <!-- <i class="fas fa-book"></i> --> 
+                CRM Marwek
+            </ion-title>
+
+        </ion-toolbar>
+    </ion-header>
+
+
+    <ion-content>
+        <ion-list>
+
+            <ion-menu-toggle>
+                <!-- ------------------Nueva seccion ---------------- -->
+
+                <ion-item routerLink="/inicio" detail>
+                    <ion-icon color="primary" slot="start" name="home-outline"></ion-icon>
+                    <ion-label color="primary">Inicio</ion-label>
+                </ion-item>
+
+                <ion-item routerLink="/productos" detail>
+                    <!-- <img class="img" src="assets/imagenes/hotSale.png" color="light"> -->
+                    <ion-icon color="primary" slot="start" name="shield-outline"></ion-icon>
+                    <ion-label color="primary">Productos</ion-label>
+                </ion-item> 
+
+                <ion-item routerLink="/planes/todos" detail>
+                    <ion-label color="primary">Planes</ion-label>
+                </ion-item> 
+
+                <ion-item routerLink="/plandets" detail>
+                    <ion-label color="primary">Planes Detalles</ion-label>
+                </ion-item> 
+
+                <ion-item routerLink="/coberturasprod/todos" detail>
+                    <ion-label color="primary">Coberturas</ion-label>
+                </ion-item> 
+
+                <ion-item routerLink="/cobproddetalles/todos" detail>
+                    <ion-label color="primary">Coberturas Detalles</ion-label>
+                </ion-item> 
+
+                <ion-item routerLink="/personalizaciones/todos" detail>
+                    <ion-label color="primary">Personalizaciones</ion-label>
+                </ion-item> 
+
+                <ion-item routerLink="/companias/todos" detail>
+                    <ion-label color="primary">Compañias</ion-label>
+                </ion-item> 
+
+                <!-- AL FINAL NO LO USO, VA EN PRODUCTOS -->
+                <!-- <ion-item routerLink="/cotizamodelos" detail>
+                    <ion-label color="primary">Modelos Cotizador</ion-label>
+                </ion-item>                  -->
+
+                <ion-item-divider>
+                    <ion-label>
+                        <!-- TITULO -->
+                    </ion-label>
+                </ion-item-divider>  
+
+                <ion-item routerLink="/indicadores" detail>
+                    <ion-label color="primary">Indicadores</ion-label>
+                </ion-item> 
+                
+                <ion-item-divider>
+                    <ion-label>
+                        <!-- TITULO -->
+                    </ion-label>
+                </ion-item-divider>      
+
+                <ion-item routerLink="/publicaciones" detail>
+                    <ion-label color="primary">Publicaciones del Blog</ion-label>
+                </ion-item>      
+                
+                <ion-item-divider>
+                    <ion-label>
+                        <!-- TITULO -->
+                    </ion-label>
+                </ion-item-divider>   
+
+                <ion-item routerLink="/cupones" detail>
+                    <ion-label color="primary">Beneficios Exclusivos</ion-label>
+                </ion-item> 
+
+                <ion-item routerLink="/categorias" detail>
+                    <ion-label color="primary">Categorias de Beneficios</ion-label>
+                </ion-item>     
+                
+                <ion-item routerLink="/comercios" detail>
+                    <ion-label color="primary">Comercios para Beneficios</ion-label>
+                </ion-item>   
+
+                <ion-item-divider>
+                    <ion-label>
+                        <!-- TITULO -->
+                    </ion-label>
+                </ion-item-divider>  
+
+                <ion-item routerLink="/frases" detail>
+                    <ion-label color="primary">Frases (Salmos)</ion-label>
+                </ion-item>
+
+                <ion-item routerLink="/nosotros" detail>
+                    <ion-label color="primary">Nosotros</ion-label>
+                </ion-item>
+
+                <ion-item routerLink="/configuraciones" detail>
+                    <ion-icon color="primary" slot="start" name="settings-outline"></ion-icon>
+                    <ion-label color="primary">Configuraciones</ion-label>
+                </ion-item>     
+
+                <ion-item routerLink="/consultanos" detail>
+                    <ion-icon color="primary" slot="start"  name="chatbox-ellipses-outline"></ion-icon>
+                    <ion-label color="primary">Consultanos</ion-label>
+                </ion-item>               
+
+                <!-- para sitios externos <ion-item href="/clientes"> -->
+
+            </ion-menu-toggle>
+
+        </ion-list>
+
+    </ion-content>
+</ion-menu>

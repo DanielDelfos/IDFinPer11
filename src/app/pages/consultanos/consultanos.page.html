@@ -1,0 +1,163 @@
+<!-- ------------CABECERA DE LA PAGINA -------------------------- -->
+<!-- Encabezado con publicidad (no menu, no fijo) utilizo directiva (falta q ande)-->
+<ion-header #header2>
+    <app-header2></app-header2>
+</ion-header>
+  
+<!-- Menu hamburguesa -->
+<app-header tituloPagina="no uso"></app-header>
+
+
+<!-- ------------CUERPO DE LA PAGINA -------------------------- -->
+<ion-content padding fullscreen #content 
+             [scrollEvents]="true">
+
+    <!-- ------------Boton flotante-------- -->
+    <app-boton></app-boton>
+
+    <!-- Marca de inicio -->
+    <h4 id='labelInicio'></h4>
+
+    <!-- TITULO DE LA PAGINA ----------------------------------------------->
+    <!-- <ion-card class="cardBarraConsultanos">
+        <ion-card traslucent class="transparenteAbajo">
+         
+            <ion-card-header traslucent>
+                <ion-card-subtitle style="font-size:150%; color: white;">
+                    <br>
+                    <br>
+                </ion-card-subtitle>
+                <ion-card-title traslucent>
+                    <div style="font-size:250%; font-weight: bold; color: white;">
+                        Consultanos
+                    </div>
+                </ion-card-title>
+            </ion-card-header>
+
+         </ion-card>
+    </ion-card> -->
+
+
+    <!------------ FORM TU OPINION NOS INTERESA EN DOS COLUMNAS-------------------------------------------------->
+    <ion-card color="light" style="width: 100%; border: 0ch; box-shadow: none; margin: 0ch;">
+        <!------------ Grilla ------------>
+        <ion-grid>
+            
+        <!-- Formulario para enviar una queja (falta revisar campos contra backend) -->
+        <form autocomplete="on" (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+
+            <ion-row>
+                <br>
+            </ion-row>
+
+            <!-- ------ Registro  1 --------- -->
+            <ion-row>
+            
+                <!-- ------ Columna  1 --------- -->
+                <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+                    <!-- ------ Card imagen animada--------- -->
+                    <!-- <div class="animate__animated animate__fadeInRight"> -->
+
+                    <ion-card style="width: 100%; border: 0ch; box-shadow: none; margin: 0ch;
+                                    color: #f4f5f8; background-color: #f4f5f8">
+
+                        <ion-card-header>
+                            <ion-card-title>
+                                
+                                <ion-list style="color: #f4f5f8; background-color: #f4f5f8;"> 
+
+                                    <ion-item color="light">
+                                        <ion-label position="floating" required>* NOMBRE Y APELLIDO / RAZON SOCIAL</ion-label>
+                                        <ion-input type="text" name="interesadoNombre" [(ngModel)]="consultaSitio.interesadoNombre" required></ion-input>
+                                    </ion-item>
+                                    
+                                    <ion-item color="light">
+                                        <ion-label position="floating">TELEFONO / CELULAR</ion-label>
+                                        <ion-input type="text" name="interesadoTelefono" [(ngModel)]="consultaSitio.interesadoTelefono"></ion-input>
+                                    </ion-item>       
+
+                                    <ion-item color="light">
+                                        <ion-label position="floating" required>HORARIO DE CONTACTO</ion-label>
+                                        <ion-input type="email" name="interesadoEmail" [(ngModel)]="consultaSitio.interesadoEmail"></ion-input>
+                                    </ion-item>
+
+                                    <ion-item color="light">
+                                        <ion-label position="floating" required>* EMAIL</ion-label>
+                                        <ion-input type="email" name="interesadoEmail" [(ngModel)]="consultaSitio.interesadoEmail"></ion-input>
+                                    </ion-item>
+                                    <br>
+                                </ion-list>
+
+                            </ion-card-title>
+                        </ion-card-header>
+
+                    </ion-card>
+
+                </ion-col>
+                
+                <!-- ------ Columna  2 --------- -->
+                <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+                    <!-- ------ Card  Formulario --------- -->
+                    <ion-card style="width: 100%; border: 0ch; box-shadow: none; margin: 0ch;
+                                    color: #f4f5f8; background-color: #f4f5f8">
+
+                        <ion-card-header> 
+                            <ion-card-title>
+
+                                <ion-list style="color: #f4f5f8; background-color: #f4f5f8">
+
+                                    <ion-item color="light">
+                                        <ion-label position="floating" >* MENSAJE</ion-label>
+                                        <ion-textarea rows="3" cols="20" 
+                                            required name="quejaMensaje" [(ngModel)]="consultaSitio.consultaMensaje"
+                                            placeholder="Ingrese su consulta...">
+                                        </ion-textarea>
+                                    </ion-item>
+                                    
+                                </ion-list>
+
+                                <ion-button color="secondary" type="submit" expand="full" [disabled]="formulario.invalid">
+                                    Enviar
+                                </ion-button>
+                                
+                                <h6>
+                                    <!-- Mensaje validando formulario  -->
+                                    <ion-note *ngIf="formulario.valid" color="success">&nbsp; Mensaje completo, puede enviarla.<br></ion-note>
+                                    <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+                                    (*) Datos obligatorios.
+                                </h6>
+                                
+                                
+                            </ion-card-title>
+                        </ion-card-header>
+                        
+                    </ion-card>
+                    
+                </ion-col>
+
+                
+            </ion-row>
+
+            <ion-row>
+                <br>
+            </ion-row>
+            
+        </form>
+
+        </ion-grid>
+    </ion-card>
+
+    <!------------ DIRECCION Y GOOGLE MAPS -------------------------------------->
+    <!-- se eliminó, ver version anterior -->
+
+ 
+  <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+  <app-footer2></app-footer2>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO --------------------- 
+(no andan botones end y top -->
+<app-footer></app-footer>

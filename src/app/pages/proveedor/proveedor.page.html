@@ -1,0 +1,124 @@
+<app-header tituloPagina="Proveedor"></app-header>
+
+<ion-content padding fullscreen>
+
+    <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+        <!------------ Grilla ------------>
+        <ion-grid fixed>
+
+            <!-- ------ Columna 1 --------- -->
+            <ion-row>
+                <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                    <!-- ------------------Encabezado del registro ---------------- -->
+                    <ion-card>
+                        <ion-item color="medium">
+                            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+                            <ion-label>{{ proveedor.interesado }}</ion-label>
+
+                            <ion-button (click)="proveedorMore( $event )" expand="block" slot="end">
+                                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                            </ion-button>
+
+                        </ion-item>
+
+                        <ion-card-content>
+                            El proveedor es utilizado para asignarlo a Compras, realice los cambios en la siguiente sección.
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- ------------------Formulario de modificacion del registro ---------------- -->
+                    <ion-card>
+                        <ion-list>
+
+                            <ion-item>
+                                <ion-label position="floating">* RESUMEN CORTO</ion-label>
+                                <ion-input type="text" name="interesado" [(ngModel)]="proveedor.interesado" required></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Producto</ion-label>
+                                <ion-input type="text" name="producto" [(ngModel)]="proveedor.producto"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="stacked">Género</ion-label>
+                                <ion-select placeholder="Indique uno">
+                                    <ion-select-option value="f">Mujer</ion-select-option>
+                                    <ion-select-option value="m">Hombre</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+
+                        </ion-list>
+
+                        <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+                            Guardar
+                        </ion-button>
+
+
+                        <!-- Mensaje validando formulario  -->
+
+                        <ion-note *ngIf="formulario.valid" color="success">&nbsp; Datos validos, recuerde guardar cambios.<br></ion-note>
+                        <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+
+
+                        <!-- Notas finales del formulario  -->
+                        <ion-card-content>
+                            <h6>
+                                Tips:
+                            </h6>
+                            <h6>
+                                (*) Datos obligatorios.
+                            </h6>
+                        </ion-card-content>
+
+                    </ion-card>
+
+                    <!-- ------ Card copyright --------- -->
+                    <ion-card>
+                        <h6>
+                            <ion-text>&nbsp; </ion-text>
+                            <span style="color:cornflowerblue; ">
+                                                      <i class="fas fa-book "></i>
+                                                  </span>
+                            <ion-text>&nbsp; Software Libro IVA v1. Copyright &nbsp;</ion-text>
+                            <i class="far fa-copyright "></i>
+                            <ion-text>&nbsp; 2020 &nbsp;</ion-text>
+                            <a href="http://www.delfosidec.org " target="_blank ">Fundación Delfos IDEC</a>
+                        </h6>
+                    </ion-card>
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA --------------------- 
+(no anda slot="end" -->
+<ion-footer>
+
+    <ion-button (click)="irAhome()" fill="clear" shape="round">
+        <ion-icon slot="start" name="home-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="irAinfo()" fill="clear" shape="round">
+        <ion-icon slot="start" name="information-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="ScrollStart()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="chevron-up-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="ScrollEnd()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="chevron-down-outline"></ion-icon>
+    </ion-button>
+
+</ion-footer>
+
+<!-- (no anda llamar las funciones desde el componente)
+<app-footer>
+</app-footer> -->

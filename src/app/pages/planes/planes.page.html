@@ -1,0 +1,203 @@
+<app-header tituloPagina="Planes">
+</app-header>
+
+<ion-content padding fullscreen>
+
+    <!-- ------------Refresh de la lista (arrastrar hacia abajo)-------- -->
+    <ion-refresher slot="fixed" (ionRefresh)="doRefreshProductos($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <!-- ------------Boton agregar o nuevo-------- -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/plan/nuevo">
+            <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+
+    </ion-fab>
+
+    <!-- ------------Boton multifuncion (todavia no lo uso) -------- 
+    (probe con boton list-circle-outline  
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="apps-outline"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-list side="top">
+            <ion-fab-button (click)="ListarProveedores()">
+                <ion-icon name="refresh-outline"></ion-icon>
+            </ion-fab-button>
+
+            <ion-fab-button routerLink="/proveedor/nuevo">
+                <ion-icon name="add-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+
+    </ion-fab> -->
+
+    <!------------ Grilla ------------>
+    <ion-grid fixed>
+
+        <!-- ------ Columna 1 --------- -->
+        <ion-row>
+            <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+                <!-- <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"> No anda-->
+
+                <!-- ------------------Encabezado del registro ---------------- -->
+                <ion-card>
+                    <ion-item color="medium">
+
+                        <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+
+                        <div *ngIf="this.filtro == 'todos'">
+                            <ion-label>Listado de Planes, todos</ion-label>
+                        </div>
+                        <div *ngIf="this.filtro !== 'todos'">
+                            <ion-label>Listado de Planes, solo los de Producto id: {{ this.filtro }}</ion-label>
+                        </div>
+
+                        <ion-button (click)="planesMore( $event )" expand="block" slot="end">
+                            <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                        </ion-button>
+
+                    </ion-item>
+
+                    <!-- ------ Buscador en la lista --------- 
+                    (falta implementar debounce -->
+                    <ion-searchbar placeholder="Buscar planes por la nota interna" debounce="1000" animated (ionChange)="buscarPlanes( $event )">
+                    </ion-searchbar>
+
+                    <ion-card-content>
+                        El plan es utilizado para mostrarlo en Sitio Web y relacionado a un producto, clic en que necesite consultar sus detalles.
+                    </ion-card-content>
+
+                </ion-card>
+
+
+                <!-- ------------LISTADO ------------------- -->
+                <ion-card>
+
+                    <ion-item color="medium" *ngIf="!cargandoLista && planes.length > 0">
+                        <ion-label> Nombre en nota interna y su control</ion-label>
+
+                        <ion-button (click)="ListarPlanes()" expand="block" slot="end">
+                            <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+                        </ion-button>
+                    </ion-item>
+
+                    <div *ngIf="!cargandoLista && planes.length > 0">
+                        <ion-list #lista *ngFor="let plan of planes | filtroProductos: textoBuscar: 'notasPlan'; let i = index">
+
+                            <ion-item-sliding>
+
+                                <ion-item [routerLink]="['/plan', plan.idPlan ]" detail>
+                                    <ion-label>{{ plan.nombrePlan }}</ion-label>   
+                                    <!-- VER SI CAMBIAR POR PRODUCTO Y PLAN -->
+
+                                    <ion-badge *ngIf="plan.notasPlan" color="warning" slot="end">Ver notas!!</ion-badge>
+                                </ion-item>
+
+                                <!-- -- Deslizado del item para botones ------------- -->
+                                <ion-item-options side="start">
+                                    <ion-item-option (click)="favoritoPlan( plan )">
+                                        <ion-icon slot="icon-only" name="star-outline"></ion-icon>
+                                    </ion-item-option>
+                                </ion-item-options>
+
+                                <ion-item-options side="end">
+                                    <ion-item-option (click)="preguntaBorrarPlan( plan, i )" color="danger">
+                                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                                    </ion-item-option>
+                                </ion-item-options>
+
+                            </ion-item-sliding>
+
+                        </ion-list>
+                    </div>
+
+
+                    <!-- Mensaje sin registros en la lista  -->
+                    <div *ngIf="!cargandoLista && planes.length === 0">
+                        <h6>
+                            <ion-list>
+                                <ion-label color="danger">
+                                    &nbsp; Sin datos ingresados
+                                </ion-label>
+                            </ion-list>
+                        </h6>
+                    </div>
+
+                    <!-- Mensaje final de la lista  -->
+                    <div *ngIf="cargandoLista">
+                        <h6>
+                            <ion-list>
+                                <ion-label color="warning">
+                                    &nbsp; Accediendo a base de datos...
+                                </ion-label>
+                            </ion-list>
+                        </h6>
+                    </div>
+                </ion-card>
+
+                <!-- Mensaje de Tips de la  lista  -->
+                <ion-card>
+                    <ion-card-content>
+                        <h6>
+                            Tips:
+                        </h6>
+                        <h6>
+                            <ion-icon name="hand-right-outline"></ion-icon>
+                              >> Pruebe deslizar el ítem a la izquierda o a la derecha, para más funciones.
+                        </h6>
+                        <h6>
+                            <ion-icon name="hand-right-outline"></ion-icon>
+                            <ion-icon name="chevron-down-outline"></ion-icon>
+                            Delizar hacia abajo la lista, para actualizarla.
+                        </h6>
+                        <h6>
+                            <ion-icon name="refresh-outline"></ion-icon>
+                            También para actualiza la lista.
+                        </h6>
+                        <h6>
+                            <ion-icon name="add-outline"></ion-icon>
+                            Agregue un nuevo plan.
+                        </h6>
+
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+    <app-footer2></app-footer2>       
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA --------------------- 
+(no anda slot="end" -->
+<!-- <ion-footer>
+
+    <ion-button (click)="irAhome()" fill="clear" shape="round">
+        <ion-icon slot="start" name="home-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="irAinfo()" fill="clear" shape="round">
+        <ion-icon slot="start" name="information-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="ScrollStart()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="chevron-up-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="ScrollEnd()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="chevron-down-outline"></ion-icon>
+    </ion-button>
+</ion-footer> -->
+
+<!-- (no anda llamar las funciones desde el componente)
+<app-footer>
+</app-footer> -->
+

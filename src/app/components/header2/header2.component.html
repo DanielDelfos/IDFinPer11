@@ -1,0 +1,61 @@
+<!------------------ CABECERA SEGUNDA (NO ES MENU NI ES FIJA) ------------>
+
+<ion-toolbar>
+<!-- 
+  <ion-buttons slot="start" expand="full" collapse="true">
+    <ion-button [routerLink]="['/inicio']" class="LogoHeader">
+        <ion-title>
+            <img class="img" src="assets/imagenes/IsoLogo202x64.png">
+        </ion-title>
+    </ion-button>
+
+ 
+    <ion-button [routerLink]="['/cotizaauto']" fill="clear" class="noVisible500">
+        <img class="img" src="assets/imagenes/19anios.png">
+    </ion-button>
+    
+    <div>&nbsp;&nbsp;&nbsp;</div> 
+
+    <ion-button [routerLink]="['/cotizaauto']" fill="clear" class="noVisible500">
+        Seguros Personales
+    </ion-button>
+
+  </ion-buttons> -->
+
+  <ion-row>
+    <ion-col>
+      <ion-button [routerLink]="['/inicio']" fill="clear" class="logoHeader">
+        <!-- <img class="img" src="assets/imagenes/IsoLogo202x64.png"> -->
+        CRM MARWEK - ADM. CLIENTES (Entorno App: {{ entornoApp }}, Entorno Base: {{ entornoBase }})
+      </ion-button>
+    </ion-col> 
+    <!-- <ion-col class="noVisible700">
+      <div style="color: white">
+        <br>
+        <img class="img" src="assets/imagenes/19anios.png">
+        <strong>
+          &nbsp;&nbsp;&nbsp;Te Conviene Siempre!
+          <br>
+        </strong>
+      </div>
+    </ion-col>   -->
+    <ion-col class="noVisible900">
+      <br>
+    </ion-col>
+    <ion-col class="noVisible900">
+      <br>
+    </ion-col>
+  </ion-row>
+    
+  <ion-buttons slot="end">
+    <!-- <ion-button (click)="listarMensajeBiblia()" fill="clear" shape="round">
+      <img class="img" src="assets/imagenes/cruzHeader2.png">
+    </ion-button> -->
+
+    <ion-button [routerLink]="['/consultanos']" slot="end" color="primary" shape="round" fill="outline">
+      Consultanos
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>  
+
+</ion-toolbar>

@@ -1,0 +1,134 @@
+<!-- ------------CABECERA DE LA PAGINA -------------------------- -->
+
+<!-- Encabezado con publicidad (no menu, no fijo) utilizo directiva (falta q ande)-->
+<ion-header #header2>
+  <app-header2></app-header2>
+</ion-header>
+
+<!-- Menu hamburguesa -->
+<app-header tituloPagina="no uso"></app-header>
+
+
+<!-- ------------CUERPO DE LA PAGINA -------------------------- -->
+<!-- falta directiva para ocultar header2 -->
+<ion-content padding fullscreen>
+
+  <!-- TITULO DE LA PAGINA ----------------------------------------------->
+  <ion-card class="cardBarraBlog">
+    <ion-card-header>
+        <ion-card-subtitle style="font-size:150%; color: white;">
+            <br>
+            <br>
+        </ion-card-subtitle>
+        <ion-card-title>
+            <div style="font-size:250%; font-weight: bold; color: white;">
+                &nbsp;  Blog de Novedades
+            </div>
+        </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <!-- ------------DETALLE DE LA NOTICIA ---------------- -->
+  <ion-card class="cardFondoBlog">
+    <!-- style="background-color: #FFFFFF; width: 100%; border: 0ch; box-shadow: none; margin: 0ch;" -->
+
+    <ion-card-header class="ion-text-center">
+
+      <ion-card-title>
+        <br>
+        <ion-text style="font-size:150%;" color="danger" >
+          <strong>
+            {{ publicacion.tituloPublicacion }}
+          </strong>
+        </ion-text>
+        <br>
+      </ion-card-title>
+  
+      <ion-card-title class="ion-text-center">
+        <img class="img" style="size: 200%;" src='{{ publicacion.urlImagenPublic }}'>
+        <br>
+      </ion-card-title>
+
+    </ion-card-header>
+
+
+    <ion-card padding style="background-color: #FFFFFF; box-shadow: none;">
+
+      <ion-card-header>
+
+        <ion-card-title>
+          {{ publicacion.inicioPublicacion }}
+          <br>
+        </ion-card-title>
+    
+        <ion-card-title>
+          {{ publicacion.restoPublicacion }}
+          <br>
+        </ion-card-title>
+      </ion-card-header>
+      
+    </ion-card>
+
+  </ion-card>
+
+  <!-- LISTAR PUBLICACIONES (COMPONENTE) PARA INICIO -------------------- -->
+  <app-publicacion-list [llamadoDesde]="'blog'">
+  </app-publicacion-list>
+
+  <!-- RECIBI LAS NOTICIAS ---------------------------------------------------------------- -->
+  <ion-card color="danger"
+      style="width: 100%; border: 0ch; box-shadow: none; margin: 0ch;">
+
+    <ion-card-header> 
+        <ion-card-title class="ion-text-center">
+            <br>
+            <ion-text style="font-size:130%; color: white;">
+                Recibí todas las novedades de Nuestro 
+            </ion-text>
+            <ion-text style="font-size:130%; color: white;">
+                Blog
+            </ion-text>
+            <!-- <img class="img" src="assets/imagenes/subrayado.png"> -->
+            <ion-text style="font-size:130%; color: white;">
+                en tu póliza
+            </ion-text>
+
+            <form (ngSubmit)="suscribiteBlog( formBlog )" #formBlog="ngForm">
+
+                <ion-grid fixed>
+                    <ion-row>
+                        <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                            <ion-item>
+                                <ion-label color="light" position="floating">Mail</ion-label>
+                                <ion-input autocomplete="email" type="email" name="tmpEmail" [(ngModel)]="publicacion.comentariosPublic" required></ion-input>
+                            </ion-item>
+                        </ion-col>
+
+                        <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                            <!-- no valido el form -->
+                            <ion-button color="secondary" type="submit" expand="full">
+                                <div style="font-weight: bold;">
+                                    Suscríbete
+                                    <br>
+                                </div>
+                                <br>
+                            </ion-button>
+                          </ion-col>
+                    </ion-row>
+                </ion-grid>
+                
+            </form>
+            
+        </ion-card-title>
+    </ion-card-header>
+
+  </ion-card>  
+    
+  <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+  <app-footer2></app-footer2>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO --------------------- 
+(no andan botones end y top -->
+<app-footer></app-footer>

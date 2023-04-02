@@ -1,0 +1,80 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/* Personal, para action sheet confirmacion de eliminar algo 
+(no anda el boton rojo, solo el texto) background-color: red !important;
+*/
+
+.rojo span,
+.rojo .action-sheet-icon .sc-ion-action-sheet-md {
+    color: red !important;
+}
+
+
+/* Personal, fondo gris para barra con el nombre a modificar ej. proveedor.page.htm
+(al final no o uso, solo ejemplo, llamar en div como class)
+*/
+
+.grisFondo span {
+    background-color: gray !important;
+    //background-color: black !important;
+}
+/* sin borde (principalmente para cards */
+.sinBorde{
+    box-shadow: none !important;
+    text-align: center;
+}
+.sinBordeTodoAncho {
+    width: 100% !important; 
+    border: 0ch !important; 
+    box-shadow: none !important; 
+    margin: 0ch !important;
+    background-color: white !important;
+}
+
+/* Transparte (lo uso en cards junto a imagenDetras1 y otros) */
+.transparenteArriba{
+    box-shadow: none !important;
+    background-color: rgba(0,0,0,0);  // el ultimo valor es la opacidad de 1 a 0
+    color: #FFFFFF;
+    position: relative !important;  // absolute no anda para cambiar la posicion del texto en iPhone
+    top: 0% !important;
+    // width: 100%;
+}
+.transparenteAbajo{
+    box-shadow: none !important;
+    background-color: rgba(0,0,0,0);  // el ultimo valor es la opacidad de 1 a 0
+    color: #FFFFFF;
+    position: relative !important;  // absolute no anda para cambiar la posicion del texto en iPhone
+    bottom: 0% !important;
+    // width: 100% !important;
+}
+

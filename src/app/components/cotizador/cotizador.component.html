@@ -1,0 +1,416 @@
+
+<!------------ FORMULARIO COTIZADOR --------------------------------------------------->
+<ion-card>
+    <!------------ Grilla ------------>
+    <ion-grid fixed>
+
+        <!-- FORMULARIO COTIZADOR -->
+        
+        <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+            <!-- ------ Registro Unico --------- -->
+            <ion-row>
+
+                <!-- ------ Columna  Form parte datos del seguro --------- -->
+                <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                
+                    <!-- ------ Card  Formulario --------- -->
+                    <ion-card class="sinBorde">
+
+                        <ion-card-header> 
+                            <ion-card-subtitle>PERSONALIZA TU SEGURO</ion-card-subtitle>
+                            <ion-card-title>
+
+                                <!-- DATOS PARTICULARES PARA SEGUROS -->
+                                <!-- Un ion-list por cada tipo de seguro (Falta agregar campo tipo de cotizador) -->
+
+                                <ion-list *ngIf="cotizadorTipo == 'CAUCIÓN'">
+                                    <ion-item>
+                                        <ion-label position="stacked">GARANTÍAS DISPONIBLES</ion-label>
+                                        <ion-select interface="popover" placeholder="Indique uno" name="caucionGarantia" [(ngModel)]="cotizador.cuacionGarantia">
+                                            <ion-select-option value="Obras y/o Suministros Públicos/Privados">Obras y/o Suministros Públicos/Privados</ion-select-option>
+                                            <ion-select-option value="Comercio Exterior - Prefinanciación de Exportaciones">Comercio Exterior - Prefinanciación de Exportaciones</ion-select-option>
+                                            <ion-select-option value="Alquileres Comerciales/Particulares">Alquileres Comerciales/Particulares</ion-select-option>
+                                            <ion-select-option value="Tenencias">Tenencias</ion-select-option>
+                                            <ion-select-option value="Desdempeño de actividad o profesión">Desdempeño de actividad o profesión</ion-select-option>
+                                            <ion-select-option value="Judiciales - Contractuales">Judiciales - Contractuales</ion-select-option>
+                                            <ion-select-option value="Concesión">Concesión</ion-select-option>
+                                            <ion-select-option value="Aduaneras">Aduaneras</ion-select-option>
+                                            <ion-select-option value="Depósitos">Depósitos</ion-select-option>
+                                            <ion-select-option value="Diferimientos impositivos">Diferimientos impositivos</ion-select-option>
+                                            <ion-select-option value="Directores de SA">Directores de SA</ion-select-option>
+                                            <ion-select-option value="Gerentes de SRL">Gerentes de SRL</ion-select-option>
+                                        </ion-select>
+                                    </ion-item>
+                                </ion-list>       
+                                
+
+                                <ion-list *ngIf="cotizadorTipo == 'HOGAR Y COMERCIO'">
+                                    <ion-grid fixed>
+                                        <ion-row>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">TASACIÓN APROXIMADA</ion-label>
+                                                    <ion-input type="text"name="hogarComTasacion" [(ngModel)]="cotizador.hogarComTasacion"></ion-input>
+                                                </ion-item>
+                                            </ion-col>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">METROS CUADRADOS APROX.</ion-label>
+                                                    <ion-input type="text"name="hogarComMetros2" [(ngModel)]="cotizador.hogarComMetros2"></ion-input>
+                                                </ion-item>
+                                            </ion-col>
+                                        </ion-row>
+
+                                        <ion-row>
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">INCENDIO</ion-label>
+                                                    <ion-checkbox name="hogarComIncendio" [(ngModel)]="cotizador.hogarComIncendio"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">ROBO</ion-label>
+                                                    <ion-checkbox name="hogarComRobo" [(ngModel)]="cotizador.hogarComRobo"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">RESP. CIVIL</ion-label>
+                                                    <ion-checkbox name="hogarComRespCivil" [(ngModel)]="cotizador.hogarComRespCivil"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+                                        </ion-row>
+
+                                        <ion-row>
+
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">CRISTALES</ion-label>
+                                                    <ion-checkbox name="hogarComCristales" [(ngModel)]="cotizador.hogarComCristales"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">TÉCNICO</ion-label>
+                                                    <ion-checkbox name="hogarComTecnico" [(ngModel)]="cotizador.hogarComTecnico"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+
+                                        </ion-row>
+
+                                        <ion-row>
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">ANIMALES DOMEST.</ion-label>
+                                                    <ion-checkbox name="hogarComAnimalesD" [(ngModel)]="cotizador.hogarComAnimalesD"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">NOTEBOOKS</ion-label>
+                                                    <ion-checkbox name="hogarComNotebooks" [(ngModel)]="cotizador.hogarComNotebooks"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">CELULARES</ion-label>
+                                                    <ion-checkbox name="hogarComCelulares" [(ngModel)]="cotizador.hogarComCelulares"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+                                        </ion-row>
+
+                                        <ion-row>
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">BICICLETAS</ion-label>
+                                                    <ion-checkbox name="hogarComBicicletas" [(ngModel)]="cotizador.hogarComBicicletas"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+
+                                            <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                                <ion-item>
+                                                    <ion-label position="floating">BOLSO PROTEGIDO</ion-label>
+                                                    <ion-checkbox name="hogarComBolsoP" [(ngModel)]="cotizador.hogarComBolsoP"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+
+                                            </ion-row>
+
+                                    </ion-grid>
+
+                                    
+                                </ion-list>   
+                                
+                                <ion-list *ngIf="cotizadorTipo == 'ART'">
+                                    <ion-grid fixed>
+
+                                        <ion-row>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">CUIT</ion-label>
+                                                    <ion-input type="text"name="artCUIT" [(ngModel)]="cotizador.artCUIT"></ion-input>
+                                                </ion-item>
+                                            </ion-col>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">MASA SALARIAL</ion-label>
+                                                    <ion-input type="text"name="artMasaSalarial" [(ngModel)]="cotizador.artMasaSalarial"></ion-input>
+                                                </ion-item>
+                                            </ion-col>
+                                        </ion-row>
+
+                                        <ion-row>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">CANT. DE EMPLEADOS</ion-label>
+                                                    <ion-input type="text"name="artCantEmpleados" [(ngModel)]="cotizador.artCantEmpleados"></ion-input>
+                                                </ion-item>
+                                            </ion-col>
+                                        </ion-row>
+
+                                        <ion-row>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">VIDA OBLIGATORIO</ion-label>
+                                                    <ion-checkbox name="artVidaOblig" [(ngModel)]="cotizador.artVidaOblig"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">CONVENIO MERCANTIL</ion-label>
+                                                    <ion-checkbox name="artConvenioMerc" [(ngModel)]="cotizador.artConvenioMerc"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+                                        </ion-row>
+
+                                        <ion-row>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">VISA EMP. RURALES</ion-label>
+                                                    <ion-checkbox name="artVisaEmpRurales" [(ngModel)]="cotizador.artVisaEmpRurales"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">OPTATIVOS</ion-label>
+                                                    <ion-checkbox name="artOptativos" [(ngModel)]="cotizador.artOptativos"></ion-checkbox>
+                                                </ion-item>
+                                            </ion-col>
+                                        </ion-row>
+
+                                    </ion-grid>
+                                </ion-list>  
+
+                                <ion-list *ngIf="cotizadorTipo == 'VIDA'">
+                                    <ion-grid fixed>
+
+                                        <ion-row>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">FECHA NACIMIENTO</ion-label>
+                                                    <ion-datetime display-format="DD.MM.YYYY" cancel-text="Cancelar" done-text="Aceptar"
+                                                        name="vidaFecNacimiento" [(ngModel)]="cotizador.vidaFecNacimiento"></ion-datetime>
+                                                </ion-item>
+                                            </ion-col>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">SUMA ASEGURADA</ion-label>
+                                                    <ion-input type="text" name="vidaSumaAseg" [(ngModel)]="cotizador.vidaSumaAseg"></ion-input>
+                                                </ion-item>
+                                            </ion-col>
+                                        </ion-row>
+
+                                    </ion-grid>
+                                </ion-list>  
+
+                                <ion-list *ngIf="cotizadorTipo == 'ASISTVIAJERO'">
+                                    <ion-grid fixed>
+
+                                        <ion-row>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">FECHA NACIMIENTO</ion-label>
+                                                    <ion-input type="text" name="artCUIT" [(ngModel)]="cotizador.artCUIT"></ion-input>
+                                                </ion-item>
+                                            </ion-col>
+                                            <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                <ion-item>
+                                                    <ion-label position="floating">SUMA ASEGURADA</ion-label>
+                                                    <ion-input type="text" name="artMasaSalarial" [(ngModel)]="cotizador.artMasaSalarial"></ion-input>
+                                                </ion-item>
+                                            </ion-col>
+                                        </ion-row>
+
+                                    </ion-grid>
+                                </ion-list>  
+
+                                <ion-list *ngIf="cotizadorTipo == 'BICICLETAS'">
+                                    <ion-grid fixed>
+                                        <ion-radio-group value="Robo $10.000 - $150" name="bicicletaCobertura" [(ngModel)]="cotizador.bicicletaCobertura">
+                                            <ion-row>
+                                            <!-- <ion-list> -->
+
+                                                    <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                        <ion-list-header>
+                                                            <ion-label>
+                                                            COBERTURA ROBO
+                                                            </ion-label>
+                                                        </ion-list-header>
+                                                    
+                                                        <ion-item>
+                                                            <ion-label>$10.000 - $150</ion-label>
+                                                            <ion-radio value="Robo $10.000 - $150"></ion-radio>
+                                                        </ion-item>
+                                                    
+                                                        <ion-item>
+                                                            <ion-label>$30.000 - $300</ion-label>
+                                                            <ion-radio value="Robo $30.000 - $300"></ion-radio>
+                                                        </ion-item>
+                                                    
+                                                        <ion-item>
+                                                            <ion-label>$50.000 - $500</ion-label>
+                                                            <ion-radio value="Robo $50.000 - $500"></ion-radio>
+                                                        </ion-item>
+                                                    
+                                                        <ion-item>
+                                                            <ion-label>$100.000 - $1.000</ion-label>
+                                                            <ion-radio value="Robo $100.000 - $1.000"></ion-radio>
+                                                        </ion-item>
+
+                                                    </ion-col>
+
+                                                    <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+                                                        <ion-list-header>
+                                                            <ion-label>
+                                                              COBERTURA ROBO + RC + ACC. PERSONALES
+                                                            </ion-label>
+                                                        </ion-list-header>
+                                                    
+                                                        <ion-item>
+                                                            <ion-label>$10.000 - $300</ion-label>
+                                                            <ion-radio value="Robo + RC + Acc. Pers. $10.000 - $300"></ion-radio>
+                                                        </ion-item>
+                                                    
+                                                        <ion-item>
+                                                            <ion-label>$30.000 - $700</ion-label>
+                                                            <ion-radio value="Robo + RC + Acc. Pers. $30.000 - $700"></ion-radio>
+                                                        </ion-item>
+                                                    
+                                                        <ion-item>
+                                                            <ion-label>$50.000 - $900</ion-label>
+                                                            <ion-radio value="Robo + RC + Acc. Pers. $50.000 - $900"></ion-radio>
+                                                        </ion-item>
+                                                    
+                                                        <ion-item>
+                                                            <ion-label>$100.000 - $1.300</ion-label>
+                                                            <ion-radio value="Robo + RC + Acc. Pers. $100.000 - $1.300"></ion-radio>
+                                                        </ion-item>
+        
+                                                    </ion-col>
+                                                <!-- </ion-list> -->
+                                            </ion-row>
+                                        </ion-radio-group>
+
+                                        <!-- <ion-item>
+                                            <ion-label position="floating">prueba</ion-label>
+                                            <ion-input type="text" name="bicicletaCobertura" [(ngModel)]="cotizador.bicicletaCobertura"></ion-input>
+                                        </ion-item> -->
+
+                                        <ion-row>
+                                            <ion-card-subtitle class="ion-text-left">Los importes corresponden a sumas aseguradas y sus costos mensuales orientativos.
+                                            </ion-card-subtitle>
+                                        </ion-row>
+
+                                    </ion-grid>
+                                </ion-list>
+
+                                <!-- DATOS GENERALES -->
+                                <!-- Para todos los tipos cotizaciones, inclusive los tipos no definidos o nulos-->
+                                <ion-list>
+                                    
+                                    <ion-item>
+                                        <ion-label position="floating">ACLARACIONES</ion-label>
+                                        <ion-input type="text"name="aclaraciones" [(ngModel)]="cotizador.aclaraciones"></ion-input>
+                                    </ion-item>
+                            
+                                </ion-list>   
+
+                            </ion-card-title>
+                        </ion-card-header>
+
+                        <ion-card-subtitle>
+                            
+                        </ion-card-subtitle>
+
+                    </ion-card>
+                    
+                </ion-col>
+    
+                <!-- ------ Columna  Form parte datos del solicitante --------- -->
+                <ion-col size-xl="6" size-lg="6" size-md="6" size-sm="6" size-xs="12">
+
+                        <!-- ------ Card  Formulario --------- -->
+                        <ion-card class="sinBorde">
+
+                            <ion-card-header> 
+                                <ion-card-subtitle>DEJANOS TUS DATOS</ion-card-subtitle>
+                                <ion-card-title>
+    
+    
+                                    <ion-list>
+
+                                        <ion-item>
+                                            <ion-label position="floating">* SU NOMBRE</ion-label>
+                                            <ion-input type="text" name="interesadoNombre" [(ngModel)]="cotizador.interesadoNombre" required></ion-input>
+                                        </ion-item>
+                                    
+                                        <ion-item>
+                                            <ion-label position="floating">* DNI / CUIL</ion-label>
+                                            <ion-input type="text" name="interesadoDNICUIL" [(ngModel)]="cotizador.interesadoDNICUIL" required></ion-input>
+                                        </ion-item>
+
+                                        <ion-item>
+                                            <ion-label position="floating">* EMAIL</ion-label>
+                                            <ion-input type="email" name="interesadoEmail" [(ngModel)]="cotizador.interesadoEmail" required></ion-input>
+                                        </ion-item>
+                              
+                                        <ion-item>
+                                            <ion-label position="floating">TELEFONO</ion-label>
+                                            <ion-input type="text" name="interesadoTelefono" [(ngModel)]="cotizador.interesadoTelefono"></ion-input>
+                                        </ion-item>                                    
+                                    
+                                    </ion-list>
+                                    
+                                    <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+                                        COTIZAR
+                                    </ion-button>
+                                    
+                                    <!-- Notas finales del formulario  -->
+                                    <h6>
+                                        <!-- Mensaje validando formulario  -->
+                                        <ion-note *ngIf="formulario.valid" color="success">&nbsp; Consulta completa, puede enviarla.<br></ion-note>
+                                        <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+                                        (*) Datos obligatorios.
+                                        <!-- pruebas vuelve a {{ vuelveApagina }} -->
+                                        <!-- consulta desde {{ consultaDesde }} -->
+                                    </h6>
+                                 
+                                </ion-card-title>
+                            </ion-card-header>
+    
+                        </ion-card>
+                </ion-col>
+
+            </ion-row>
+        </form>
+
+    </ion-grid>
+</ion-card>
+

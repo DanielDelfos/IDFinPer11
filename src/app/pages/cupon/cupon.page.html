@@ -1,0 +1,153 @@
+<app-header color="light" tituloPagina="Cupón"></app-header>
+
+<ion-content padding fullscreen>
+
+    <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+        <!------------ Grilla ------------>
+        <ion-grid fixed>
+
+            <!-- ------ Columna 1 --------- -->
+            <ion-row>
+                <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                    <!-- ------------------Encabezado del registro ---------------- -->
+                    <ion-card color="light">
+                        <ion-item color="medium">
+                            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+                            <ion-label>{{ cupon.tituloCupon }}</ion-label>
+
+                            <ion-button (click)="cuponMore( $event )" expand="block" slot="end">
+                                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                            </ion-button>
+
+                        </ion-item>
+
+                        <ion-card-content>
+                            Los cupones se utilizan como Beneficios, en el Sitio Web.
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- ------------------Formulario de modificacion del registro ---------------- -->
+                    <ion-card>
+                        <!-- SFAD{{ producto.descripCortaProd}} {{ producto.cotizadorTipo}} -->
+                        <ion-list>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">* TITULO (max. 30 caracteres)</ion-label>
+                                <ion-input type="text" name="tituloCupon" [(ngModel)]="cupon.tituloCupon" required></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">Sub título (max. 60 caracteres)</ion-label>
+                                <ion-input type="text" name="subtituloCupon" [(ngModel)]="cupon.subtituloCupon"></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">Descripción</ion-label>
+                                <ion-input type="text" name="descripcionCupon" [(ngModel)]="cupon.descripcionCupon"></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">URL de la imágen</ion-label>
+                                <ion-input type="text" name="urlImagenCupon" [(ngModel)]="cupon.urlImagenCupon"></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">Categoría</ion-label>
+                                <ion-input type="text" name="categoriaCupon" [(ngModel)]="cupon.categoriaCupon"></ion-input>
+                            </ion-item>
+                            
+                            <ion-item color="light">
+                                <ion-label position="floating">Nivel</ion-label>
+                                <ion-input type="text" name="nivelCupon" [(ngModel)]="cupon.nivelCupon"></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">Estado</ion-label>
+                                <ion-input type="text" name="estadoCupon" [(ngModel)]="cupon.estadoCupon"></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">Orden de publicación</ion-label>
+                                <ion-input type="text" name="ordenCupon" [(ngModel)]="cupon.ordenCupon"></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                              <ion-label position="floating">Comentarios internos</ion-label>
+                              <ion-input type="text" name="comentariosIntCupon" [(ngModel)]="cupon.comentariosIntCupon"></ion-input>
+                          </ion-item>
+                            <!-- ver si uso type string o text, falta texto largo y numero para orden -->
+
+                        </ion-list>
+
+                        <ion-button color="light" type="submit" expand="full" [disabled]="formulario.invalid">
+                            Guardar
+                        </ion-button>
+
+
+                        <!-- Mensaje validando formulario  -->
+
+                        <ion-note *ngIf="formulario.valid" color="success">&nbsp; Datos validos, recuerde guardar cambios.<br></ion-note>
+                        <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+
+
+                        <!-- Notas finales del formulario  -->
+                        <ion-card-content>
+                            <h6>
+                                Tips:
+                            </h6>
+                            <h6>
+                                (*) Datos obligatorios.
+                            </h6>
+                        </ion-card-content>
+
+                    </ion-card>
+
+                    <!-- ------ Card copyright --------- -->
+                    <ion-card color="light">
+                        <h6>
+                            <ion-text>&nbsp; </ion-text>
+                            <span style="color:cornflowerblue; ">
+                                                      <i class="fas fa-book "></i>
+                                                  </span>
+                            <ion-text>&nbsp; Software CRM v73. Copyright &nbsp;</ion-text>
+                            <i class="far fa-copyright "></i>
+                            <ion-text>&nbsp; 2020 &nbsp;</ion-text>
+                            <a href="http://www.delfosidec.org " target="_blank ">Fundación Delfos IDEC</a>
+                        </h6>
+                    </ion-card>
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA --------------------- 
+(no anda slot="end" -->
+<ion-footer>
+
+    <ion-button (click)="irAhome()" fill="clear" shape="round">
+        <ion-icon slot="start" name="home-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="irAinfo()" fill="clear" shape="round">
+        <ion-icon slot="start" name="information-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="ScrollStart()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="chevron-up-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="ScrollEnd()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="chevron-down-outline"></ion-icon>
+    </ion-button>
+
+</ion-footer>
+
+<!-- (no anda llamar las funciones desde el componente)
+<app-footer>
+</app-footer> -->

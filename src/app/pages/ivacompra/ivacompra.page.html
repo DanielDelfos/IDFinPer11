@@ -1,0 +1,70 @@
+<app-header tituloPagina="Compra"></app-header>
+
+<ion-content padding fullscreen>
+
+    <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+        <!------------ ?? ------------>
+        <ion-grid fixed>
+
+            <!-- ------ ?? --------- -->
+            <ion-row>
+                <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                    <ion-list>
+
+                        <ion-item>
+                            <ion-label position="floating">* Interesado</ion-label>
+                            <!-- <ion-input type="text" name="interesado" [(ngModel)]=" ivaCompras.interesado" required></ion-input> -->
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label position="floating">Producto</ion-label>
+                            <!-- <ion-input type="text" name="producto" [(ngModel)]="ivaCompras.producto"></ion-input> -->
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label position="floating">ID Compra</ion-label>
+                            <!-- <ion-input type="text" name="idConsulta" [(ngModel)]="ivaCompra.idConsulta" disabled="disabled"></ion-input> -->
+                        </ion-item>
+
+                    </ion-list>
+
+                    <!-- Mensaje validando formulario  -->
+                    <h6>
+                        <ion-list>
+                            <ion-label>(*) Información obligatoria.</ion-label>
+                        </ion-list>
+                        <ion-list>
+                            <ion-label *ngIf="formulario.valid" color="success">Datos validos, recuerde guardar cambios.</ion-label>
+                            <ion-label *ngIf="!formulario.valid" color="danger">Datos incompletos o no validos, revise.</ion-label>
+                        </ion-list>
+                    </h6>
+
+                    <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+                        Guardar
+                    </ion-button>
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA ------------- --------- -->
+<ion-footer>
+
+    <h6>
+        <ion-text>&nbsp; </ion-text>
+        <span style="color:cornflowerblue;">
+            <i class="fas fa-book"></i>
+        </span>
+        <ion-text>&nbsp; Software Libro IVA v1. Copyright &nbsp;</ion-text>
+        <i class="far fa-copyright"></i>
+        <ion-text>&nbsp; 2020 &nbsp;</ion-text>
+        <a href="http://www.delfosidec.org" target="_blank">Fundación Delfos IDEC</a>
+    </h6>
+
+</ion-footer>

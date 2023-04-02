@@ -1,0 +1,35 @@
+<!-- ------------CABECERA DE LA PAGINA -------------------------- -->
+<ion-header traslucent>
+  <app-header tituloPagina="no uso"></app-header>
+</ion-header>
+
+
+<!-- ------------CUERPO DE LA PAGINA -------------------------- -->
+<ion-content padding fullscreen>
+
+  <!-- ------------Boton flotante-------- -->
+  <app-boton></app-boton>
+  
+  <!-- TITULO DE LA PAGINA ----------------------------------------------->
+  <!-- <ion-card>
+    <ion-card-header color="secondary">
+      <ion-card-title class="ion-text-center">
+        KITS DE SEGUROS PARA VOS
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card> -->
+
+  <!-- LISTAR PRODUCTOS (COMPONENTE) (uso el mismo de la pagina inicio)-->
+  <!-- <app-producto-list [llamadoDesde]="['kits']">
+  </app-producto-list> -->
+  <app-producto-list2 [llamadoDesde]="'kitsInicio'">
+  </app-producto-list2>
+    
+  <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+  <app-footer2></app-footer2>
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO --------------------- 
+(no andan botones end y top -->
+<app-footer></app-footer>

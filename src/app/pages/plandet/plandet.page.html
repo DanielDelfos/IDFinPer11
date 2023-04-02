@@ -1,0 +1,111 @@
+<app-header color="light" tituloPagina="Cupón"></app-header>
+
+<ion-content padding fullscreen>
+
+    <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+        <!------------ Grilla ------------>
+        <ion-grid fixed>
+
+            <!-- ------ Columna 1 --------- -->
+            <ion-row>
+                <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                    <!-- ------------------Encabezado del registro ---------------- -->
+                    <ion-card color="light">
+                        <ion-item color="medium">
+                            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+                            <ion-label>{{ plandet.nombreInternoPlanDet }}</ion-label>
+
+                            <ion-button (click)="plandetMore( $event )" expand="block" slot="end">
+                                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                            </ion-button>
+
+                        </ion-item>
+
+                        <ion-card-content>
+                            Consulta sobre Detalle de Planes de Productos (Coberturas), en el Sitio Web.
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- ------------------Formulario de modificacion del registro ---------------- -->
+                    <ion-card>
+                        <!-- SFAD{{ producto.descripCortaProd}} {{ producto.cotizadorTipo}} -->
+                        <ion-list>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">* NOMBRE INTERNO</ion-label>
+                                <ion-input type="text" name="nombreInternoPlanDet" [(ngModel)]="plandet.nombreInternoPlanDet" required></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">* ID DEL PLAN PADRE</ion-label>
+                                <ion-input type="text" name="idPlan" [(ngModel)]="plandet.idPlan" required></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">* DETALLE VISIBLE (CONCEPTO E IMPORTE)</ion-label>
+                                <ion-input type="text" name="detalleVisiblePlanDet" [(ngModel)]="plandet.detalleVisiblePlanDet" required></ion-input>
+                            </ion-item>
+
+                            <ion-item color="light">
+                              <ion-label position="floating">* ORDEN EN SITIO</ion-label>
+                              <ion-input type="text" name="ordenPlanDet" [(ngModel)]="plandet.ordenPlanDet" required></ion-input>
+                            </ion-item>
+
+                            <ion-item  color="light">
+                                <ion-label position="stacked">* ESTADO ACTUAL</ion-label>
+                                <ion-select interface="popover" placeholder="Indique uno" name="estadoPlanDet" [(ngModel)]="plandet.estadoPlanDet">
+                                    <ion-select-option value="Vigente">Vigente</ion-select-option>
+                                    <ion-select-option value="No vigente">No vigente</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+
+                            <ion-item color="light">
+                                <ion-label position="floating">Notas internas (resalta en lista)</ion-label>
+                                <ion-input type="text" name="notasPlanDet" [(ngModel)]="plandet.notasPlanDet"></ion-input>
+                            </ion-item>
+                            
+                            <!-- ver si uso type string o text, falta texto largo y numero para orden -->
+
+                        </ion-list>
+
+                        <ion-button color="light" type="submit" expand="full" [disabled]="formulario.invalid">
+                            Guardar
+                        </ion-button>
+
+
+                        <!-- Mensaje validando formulario  -->
+
+                        <ion-note *ngIf="formulario.valid" color="success">&nbsp; Datos validos, recuerde guardar cambios.<br></ion-note>
+                        <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+
+
+                        <!-- Notas finales del formulario  -->
+                        <ion-card-content>
+                            <h6>
+                                Tips:
+                            </h6>
+                            <h6>
+                                (*) Datos obligatorios.
+                            </h6>
+
+                        </ion-card-content>
+
+                    </ion-card>
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+
+
+    <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+    <app-footer2></app-footer2>   
+        
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO ---------------------  -->
+<!-- no andan botones end y top --> 
+<app-footer></app-footer>

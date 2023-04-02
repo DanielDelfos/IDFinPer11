@@ -1,0 +1,215 @@
+<!-- ---------------------------CABECERA DE LA PAGINA ------------------------------->
+
+<!-- Encabezado con publicidad (no menu, no fijo) utilizo -->
+<ion-header #header2>
+  <app-header2></app-header2>
+</ion-header>
+
+<!-- <ion-header traslucent> -->
+  <app-header tituloPagina="Compra"></app-header>
+<!-- </ion-header> -->
+
+
+<!-- ----------------------------CUERPO DE LA PAGINA -------------------------- -->
+<ion-content padding fullscreen>
+
+  <!-- ------------Refresh de la lista (arrastrar hacia abajo)-------- -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefreshIndicadores($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- ------------Boton agregar o nuevo-------- -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink="/indicador/nuevo">
+          <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+
+  </ion-fab>
+
+  <!-- ------------Boton multifuncion (todavia no lo uso) -------- 
+  (probe con boton list-circle-outline  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+          <ion-icon name="apps-outline"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-list side="top">
+          <ion-fab-button (click)="ListarProveedores()">
+              <ion-icon name="refresh-outline"></ion-icon>
+          </ion-fab-button>
+
+          <ion-fab-button routerLink="/proveedor/nuevo">
+              <ion-icon name="add-outline"></ion-icon>
+          </ion-fab-button>
+      </ion-fab-list>
+
+  </ion-fab> -->
+
+  <!------------ Grilla ------------>
+  <ion-grid fixed>
+
+      <!-- ------ Columna 1 --------- -->
+      <ion-row>
+          <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+              <!-- <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"> No anda-->
+
+              <!-- ------------------Encabezado del registro ---------------- -->
+              <ion-card>
+                  <ion-item color="medium">
+
+                      <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+                      <ion-label>Listado de todos, alfabético</ion-label>
+
+                      <ion-button (click)="indicadoresMore( $event )" expand="block" slot="end">
+                          <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                      </ion-button>
+
+                  </ion-item>
+
+                  <!-- ------ Buscador en la lista --------- 
+                  (falta implementar debounce -->
+                  <ion-searchbar placeholder="Buscar indicadores" debounce="1000" animated (ionChange)="buscarIndicadores( $event )">
+                  </ion-searchbar>
+
+                  <ion-card-content>
+                      El indicador es utilizado para mostrarlo en Sitio Web, clic en que necesite consultar sus detalles.
+                  </ion-card-content>
+
+              </ion-card>
+
+
+              <!-- ------------LISTADO ------------------- -->
+              <ion-card>
+
+                  <ion-item color="medium" *ngIf="!cargandoLista && indicadores.length > 0">
+                      <ion-label> Nombre resumen y su control</ion-label>
+
+                      <ion-button (click)="ListarIndicadores()" expand="block" slot="end">
+                          <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+                      </ion-button>
+                  </ion-item>
+
+                  <div *ngIf="!cargandoLista && indicadores.length > 0">
+                      <ion-list #lista *ngFor="let indicador of indicadores | filtroIndicadores: textoBuscar: 'nombreIndicador'; let i = index">
+
+                          <ion-item-sliding>
+
+                              <ion-item [routerLink]="['/indicador', indicador.idIndicador ]" detail>
+                                  <ion-label>{{ indicador.nombreIndicador }}</ion-label>
+
+                                  <ion-badge *ngIf="!indicador.grupoIndicador" color="warning" slot="end">Falta grupo</ion-badge>
+                              </ion-item>
+
+                              <!-- -- Deslizado del item para botones ------------- -->
+                              <ion-item-options side="start">
+                                  <ion-item-option (click)="favoritoIndicador( indicador )">
+                                      <ion-icon slot="icon-only" name="star-outline"></ion-icon>
+                                  </ion-item-option>
+                              </ion-item-options>
+
+                              <ion-item-options side="end">
+                                  <ion-item-option (click)="preguntaBorrarProd( indicador, i )" color="danger">
+                                      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                                  </ion-item-option>
+                              </ion-item-options>
+
+                          </ion-item-sliding>
+
+                      </ion-list>
+                  </div>
+
+
+                  <!-- Mensaje sin registros en la lista  -->
+                  <div *ngIf="!cargandoLista && indicadores.length === 0">
+
+                      <!-- REVISAR COMO QUEDA SIN REGISTROS !! -->
+                      <ion-button (click)="ListarIndicadores()" expand="block" slot="end">
+                          <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+                      </ion-button>
+
+                      <h6>
+                          <ion-list>
+                              <ion-label color="danger">
+                                  &nbsp; Sin datos ingresados
+                              </ion-label>
+                          </ion-list>
+                      </h6>
+                  </div>
+
+                  <!-- Mensaje final de la lista  -->
+                  <div *ngIf="cargandoLista">
+                      <h6>
+                          <ion-list>
+                              <ion-label color="warning">
+                                  &nbsp; Accediendo a base de datos...
+                              </ion-label>
+                          </ion-list>
+                      </h6>
+                  </div>
+              </ion-card>
+
+              <!-- Mensaje de Tips de la  lista  -->
+              <ion-card>
+                  <ion-card-content>
+                      <h6>
+                          Tips:
+                      </h6>
+                      <h6>
+                          <ion-icon name="hand-right-outline"></ion-icon>
+                            >> Pruebe deslizar el ítem a la izquierda o a la derecha, para más funciones.
+                      </h6>
+                      <h6>
+                          <ion-icon name="hand-right-outline"></ion-icon>
+                          <ion-icon name="chevron-down-outline"></ion-icon>
+                          Delizar hacia abajo la lista, para actualizarla.
+                      </h6>
+                      <h6>
+                          <ion-icon name="refresh-outline"></ion-icon>
+                          También para actualiza la lista.
+                      </h6>
+                      <h6>
+                          <ion-icon name="add-outline"></ion-icon>
+                          Agregue un nuevo indicador.
+                      </h6>
+
+                  </ion-card-content>
+              </ion-card>
+
+          </ion-col>
+      </ion-row>
+
+  </ion-grid>
+
+  <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+  <app-footer2></app-footer2>   
+
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO ---------------------  -->
+<!-- no andan botones end y top --> 
+<app-footer></app-footer>
+
+<!-- ------ PIE DE PAGINA ---------------------  -->
+<!-- no anda slot="end"  -->
+<!-- <ion-footer>
+
+  <ion-button (click)="irAhome()" fill="clear" shape="round">
+      <ion-icon slot="start" name="home-outline"></ion-icon>
+  </ion-button>
+
+  <ion-button (click)="irAinfo()" fill="clear" shape="round">
+      <ion-icon slot="start" name="information-outline"></ion-icon>
+  </ion-button>
+
+  <ion-button (click)="ScrollStart()" fill="clear" shape="round">
+      <ion-icon slot="icon-only" name="chevron-up-outline"></ion-icon>
+  </ion-button>
+
+  <ion-button (click)="ScrollEnd()" fill="clear" shape="round">
+      <ion-icon slot="icon-only" name="chevron-down-outline"></ion-icon>
+  </ion-button>
+</ion-footer> -->
+
+<!-- (no anda llamar las funciones desde el componente)
+<app-footer>
+</app-footer> -->

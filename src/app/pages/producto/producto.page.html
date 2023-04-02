@@ -1,0 +1,408 @@
+<app-header tituloPagina="Producto"></app-header>
+
+<ion-content padding fullscreen>
+
+    <form (ngSubmit)="guardar( formulario )" #formulario="ngForm">
+        <!------------ Grilla ------------>
+        <ion-grid fixed>
+
+            <!-- ------ Columna 1 --------- -->
+            <ion-row>
+                <ion-col size="12" size-md="12" size-sm="12" size-xs="12">
+
+                    <!-- ------------------Encabezado del registro ---------------- -->
+                    <ion-card>
+                        <ion-item color="medium">
+                            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+                            <ion-label>{{ producto.nombreProducto }}</ion-label>
+
+                            <ion-button (click)="productoMore( $event )" expand="block" slot="end">
+                                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                            </ion-button>
+
+                        </ion-item>
+
+                        <ion-card-content>
+                            El Producto es utiliza en el Sitio Web Público, realice los cambios en la siguiente sección.
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- ------------------Formulario de modificacion del registro ---------------- -->
+                    <ion-card>
+                        <!-- SFAD{{ producto.descripCortaProd}} {{ producto.cotizadorTipo}} -->
+                        <ion-list>
+
+                            <ion-item>
+                                <ion-label position="floating">* NOMBRE DEL PRODUCTO (max. 30 caracteres)</ion-label>
+                                <ion-input type="text" name="nombreProducto" [(ngModel)]="producto.nombreProducto" required></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Descripción corta (max. 60 caracteres)</ion-label>
+                                <ion-input type="text" name="descripCortaProd" [(ngModel)]="producto.descripCortaProd"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Descripción larga</ion-label>
+                                <ion-input type="text" name="descripLargaProd" [(ngModel)]="producto.descripLargaProd"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Precio (texto)</ion-label>
+                                <ion-input type="text" name="precioActualProd" [(ngModel)]="producto.precioActualProd"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">¿Es promoción? (true)</ion-label>
+                                <ion-input type="text" name="esPromocionProd" [(ngModel)]="producto.esPromocionProd"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Categoría (personales, empresas, kits), kits se listan tambien en pagina personal</ion-label>
+                                <ion-input type="text" name="categoriaProd" [(ngModel)]="producto.categoriaProd"></ion-input>
+                            </ion-item>
+                            
+                            <ion-item>
+                                <ion-label position="floating">Vigencia hasta</ion-label>
+                                <ion-input type="date" name="vigenciaHastaProd" [(ngModel)]="producto.vigenciaHastaProd"></ion-input>
+                            </ion-item>
+
+                            <ion-item-divider>
+                                <ion-label>
+
+                                </ion-label>
+                            </ion-item-divider>
+
+                            <ion-item-divider>
+                                <ion-label>
+                                    <strong>
+                                        IMÁGENES
+                                    </strong>
+                                </ion-label>
+                            </ion-item-divider>  
+                            
+                            <ion-item>
+                                <!-- <ion-label position="floating">URL de la imágen Principal del Producto (ancho 400px, alto 200px)</ion-label>
+                                <ion-input type="string" name="urlImagenProd" [(ngModel)]="producto.urlImagenProd"></ion-input> -->
+
+                                <ion-grid fixed>
+                                    <ion-row>
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-label for="fileUpload" position="floating">
+                                                <!-- <ion-icon slot="icon-only" name="images"></ion-icon>  -->
+                                                URL IMAGEN PRINCIPAL DEL PRODUCTO <br>
+                                                (ancho 400px, alto 200px)
+                                            </ion-label>
+                                        </ion-col>
+
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-input id="fileUpload" type="file" accept="image/*" name="urlImagenProd" (change)="newImageUploadPrincipal($event)" [(ngModel)]="producto.urlImagenProd"></ion-input>
+                                            <!-- no anda ocultando el input con style="display: none;", y clic en la imagen -->
+                                        </ion-col>   
+                                        
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <a href='{{ producto.urlImagenProd }}' target="_blank" style="text-decoration:none">
+                                                <ion-thumbnail>
+                                                    <img class="img" src='{{ producto.urlImagenProd }}'>
+                                                </ion-thumbnail>
+                                            </a>
+                                            <img [src]="newImage">
+                                        </ion-col>  
+                                    </ion-row>
+
+                                    <ion-input type="text" name="urlImagenProd" [(ngModel)]="producto.urlImagenProd"></ion-input>
+                                </ion-grid>                                
+                            
+                            </ion-item>
+
+                            <ion-item>
+                                <!-- <ion-label position="floating">URL de la imágen del Icono 1 - En Inicio (ancho 110px, alto 70px)</ion-label>
+                                <ion-input type="string" name="urlImagenIconoProd" [(ngModel)]="producto.urlImagenIconoProd"></ion-input> -->
+
+                                <ion-grid fixed>
+                                    <ion-row>
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-label for="fileUpload" position="floating">
+                                                <!-- <ion-icon slot="icon-only" name="images"></ion-icon>  -->
+                                                URL IMAGEN DEL ICONO 1 - EN INICIO <br>
+                                                (ancho 110px, alto 70px)
+                                            </ion-label>
+                                        </ion-col>
+
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-input id="fileUpload" type="file" accept="image/*" name="urlImagenIconoProd" (change)="newImageUploadIcono1($event)" [(ngModel)]="producto.urlImagenIconoProd"></ion-input>
+                                            <!-- no anda ocultando el input con style="display: none;", y clic en la imagen -->
+                                        </ion-col>   
+                                        
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <a href='{{ producto.urlImagenIconoProd }}' target="_blank" style="text-decoration:none">
+                                                <ion-thumbnail>
+                                                    <img class="img" src='{{ producto.urlImagenIconoProd }}'>
+                                                </ion-thumbnail>
+                                            </a>
+                                            <img [src]="newImage">
+                                        </ion-col>  
+                                    </ion-row>
+
+                                    <ion-input type="text" name="urlImagenIconoProd" [(ngModel)]="producto.urlImagenIconoProd"></ion-input>
+                                </ion-grid>   
+
+                            </ion-item>
+
+                            <ion-item>
+                                <!-- <ion-label position="floating">URL de la imágen del Icono 2 - En Banners (ancho 110px, alto 70px)</ion-label>
+                                <ion-input type="string" name="urlImagenIcono2Prod" [(ngModel)]="producto.urlImagenIcono2Prod"></ion-input> -->
+
+                                <ion-grid fixed>
+                                    <ion-row>
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-label for="fileUpload" position="floating">
+                                                <!-- <ion-icon slot="icon-only" name="images"></ion-icon>  -->
+                                                URL IMAGEN ICONO 2 - EN BANNER SEGURO <br>
+                                                (ancho 110px, alto 70px)
+                                            </ion-label>
+                                        </ion-col>
+
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-input id="fileUpload" type="file" accept="image/*" name="urlImagenIcono2Prod" (change)="newImageUploadIcono2($event)" [(ngModel)]="producto.urlImagenIcono2Prod"></ion-input>
+                                            <!-- no anda ocultando el input con style="display: none;", y clic en la imagen -->
+                                        </ion-col>   
+                                        
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <a href='{{ producto.urlImagenIcono2Prod }}' target="_blank" style="text-decoration:none">
+                                                <ion-thumbnail>
+                                                    <img class="img" src='{{ producto.urlImagenIcono2Prod }}'>
+                                                </ion-thumbnail>
+                                            </a>
+                                            <img [src]="newImage">
+                                        </ion-col>  
+                                    </ion-row>
+
+                                    <ion-input type="text" name="urlImagenIcono2Prod" [(ngModel)]="producto.urlImagenIcono2Prod"></ion-input>
+                                </ion-grid>   
+                                
+                            </ion-item>
+
+                            <ion-item>
+                                <!-- <ion-label position="floating">URL de la imágen del Banner (ancho 1500px, alto 250px)</ion-label>
+                                <ion-input type="string" name="urlImagenBannerProd" [(ngModel)]="producto.urlImagenBannerProd"></ion-input> -->
+                            
+                                <ion-grid fixed>
+                                    <ion-row>
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-label for="fileUpload" position="floating">
+                                                <!-- <ion-icon slot="icon-only" name="images"></ion-icon>  -->
+                                                URL IMAGEN BANNER - EN PAGINA SEGURO <br>
+                                                (ancho 1500px, alto 250px)
+                                            </ion-label>
+                                        </ion-col>
+
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <ion-input id="fileUpload" type="file" accept="image/*" name="urlImagenBannerProd" (change)="newImageUploadBanner($event)" [(ngModel)]="producto.urlImagenBannerProd"></ion-input>
+                                            <!-- no anda ocultando el input con style="display: none;", y clic en la imagen -->
+                                        </ion-col>   
+                                        
+                                        <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+                                            <a href='{{ producto.urlImagenBannerProd }}' target="_blank" style="text-decoration:none">
+                                                <ion-thumbnail>
+                                                    <img class="img" src='{{ producto.urlImagenBannerProd }}'>
+                                                </ion-thumbnail>
+                                            </a>
+                                            <img [src]="newImage">
+                                        </ion-col>  
+                                    </ion-row>
+
+                                    <ion-input type="text" name="urlImagenBannerProd" [(ngModel)]="producto.urlImagenBannerProd"></ion-input>
+                                </ion-grid>                               
+                            
+                            </ion-item>
+
+                            <ion-item-divider>
+                                <ion-label>
+
+                                </ion-label>
+                            </ion-item-divider>
+
+                            <ion-item>
+                                <ion-label position="floating">Palabras clave (buscador)</ion-label>
+                                <ion-input type="string" name="palabrasClaveProd" [(ngModel)]="producto.palabrasClaveProd"></ion-input>
+                            </ion-item>
+
+                            <!-- Pasar a select, y que admita solo los tipos del ngif del componente cotizador -->
+                            <ion-item>
+                                <ion-label position="floating">Tipo de cotizador</ion-label>
+                                <ion-input type="string" name="cotizadorTipo" [(ngModel)]="producto.cotizadorTipo"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Texto en comentario Personalizacion</ion-label>
+                                <ion-input type="string" name="textoPersonalizacion" [(ngModel)]="producto.textoPersonalizacion"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Texto en Subir foto/s Contrataciones</ion-label>
+                                <ion-input type="string" name="textoSubirImagen" [(ngModel)]="producto.textoSubirImagen"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="floating">Id de COMPAÑIA (a enviar el email)</ion-label>
+                                <ion-input type="string" name="idCompaniaProd" [(ngModel)]="producto.idCompaniaProd"></ion-input>
+
+                                <ion-button [routerLink]="['/compania', producto.idCompaniaProd ]" expand="block" fill="clear" shape="round">
+                                    <ion-icon slot="icon-only" name="arrow-forward-outline"></ion-icon>
+                                    Ir a la Compañia
+                                </ion-button>
+
+                            </ion-item>
+
+                            <!-- Pasar a select, y que admita solo los tipos del ngif del componente cotizador -->
+                            <ion-item>
+                                <ion-label position="floating">Archivo prueba</ion-label>
+                                <!-- <ion-input type="string" name="cotizadorTipo" [(ngModel)]="producto.cotizadorTipo"></ion-input> -->
+                                <input type="file" id="myfile" name="myfile" class="rm-input" onchange="selectedFile();"/>
+                            </ion-item>
+
+                            <ion-item-divider>
+                                <ion-label>
+
+                                </ion-label>
+                            </ion-item-divider>
+
+                            <ion-item-divider>
+                                <ion-label>
+                                    <strong>
+                                        SOLICITUDES PARA EL COTIZADOR
+                                    </strong>
+                                </ion-label>
+                            </ion-item-divider>  
+
+                            <ion-grid fixed>
+                                <ion-row>
+                                    <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+
+                                        <ion-item>
+                                            <ion-label position="floating">Marca</ion-label>
+                                            <ion-checkbox name="marcaCotMod" [(ngModel)]="producto.marcaCotProd" checked="false"></ion-checkbox>
+                                        </ion-item>                       
+
+                                    </ion-col>
+
+                                    <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+            
+                                        <ion-item>
+                                          <ion-label position="floating">Modelo</ion-label>
+                                          <ion-checkbox name="modeloCotMod" [(ngModel)]="producto.modeloCotProd"></ion-checkbox>
+                                        </ion-item>                            
+
+                                    </ion-col>                                    
+
+                                    <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="4" size-xs="10">
+    
+                                        <ion-item>
+                                          <ion-label position="floating">Año</ion-label>
+                                          <ion-checkbox name="anioCotMod" [(ngModel)]="producto.anioCotProd"></ion-checkbox>
+                                        </ion-item>
+    
+                                    </ion-col>
+                                </ion-row>
+
+                            </ion-grid>
+
+                            <ion-item-divider>
+                                <ion-label>
+
+                                </ion-label>
+                            </ion-item-divider> 
+
+                            <ion-item-divider>
+                                <ion-label>
+                                    <div style="text-align: center;">
+                                        <strong>
+                                            OTROS DATOS
+                                        </strong>
+                                    </div>
+                                </ion-label>
+                            </ion-item-divider> 
+
+                            <ion-item>
+                              <ion-label position="floating">NOTAS INTERNAS</ion-label>
+                              <ion-textarea rows="5" cols="20" name="notasIntProd" [(ngModel)]="producto.notasIntProd"
+                                  placeholder="Ingrese otras informaciones adicionales...">
+                              </ion-textarea>
+                            </ion-item>
+
+
+<!--                             <ion-item>
+                                <ion-label position="stacked">Género</ion-label>
+                                <ion-select placeholder="Indique uno">
+                                    <ion-select-option value="f">Mujer</ion-select-option>
+                                    <ion-select-option value="m">Hombre</ion-select-option>
+                                </ion-select>
+                            </ion-item> -->
+
+                        </ion-list>
+
+                        <ion-button type="submit" expand="full" [disabled]="formulario.invalid">
+                            Guardar
+                        </ion-button>
+
+
+                        <!-- Mensaje validando formulario  -->
+
+                        <ion-note *ngIf="formulario.valid" color="success">&nbsp; Datos validos, recuerde guardar cambios.<br></ion-note>
+                        <ion-note *ngIf="!formulario.valid" color="danger">&nbsp; Datos incompletos o no validos, revise.<br></ion-note>
+
+
+                        <!-- Notas finales del formulario  -->
+                        <ion-card-content>
+                            <h6>
+                                Tips:
+                            </h6>
+                            <h6>
+                                (*) Datos obligatorios.
+                            </h6>
+                        </ion-card-content>
+
+                    </ion-card>
+
+                    <!-- ----------------------Relacionados---------------- -->
+                    <ion-card>
+                        <ion-list>
+                            <ion-item color="medium">
+                                <ion-label>Entidades relacionadas a este registro</ion-label>
+                            </ion-item>
+
+                            <ion-item [routerLink]="['/planes', producto.idProducto ]" detail>
+                                <ion-label>Planes</ion-label>
+                            </ion-item>
+
+                            <ion-item [routerLink]="['/coberturasprod', producto.idProducto ]" detail>
+                                <ion-label>Coberturas</ion-label>
+                            </ion-item>
+
+                            <ion-item [routerLink]="['/personalizaciones', producto.idProducto ]" detail>
+                                <ion-label>Personalizaciones</ion-label>
+                            </ion-item>
+                            
+                        </ion-list>
+
+                        <ion-card-content>
+                            Recuerde guardar primero éste registro, antes de ir a la relacionada.
+                        </ion-card-content>
+                    </ion-card> 
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+
+    <!------------ PIE DE PAGINA NO FIJO  ------------------------------------>
+    <app-footer2></app-footer2>   
+        
+</ion-content>
+
+<!-- ------ PIE DE PAGINA FIJO ---------------------  -->
+<!-- no andan botones end y top --> 
+<app-footer></app-footer>

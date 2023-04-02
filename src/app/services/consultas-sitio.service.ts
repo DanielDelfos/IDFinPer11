@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { RespuestaConsultasSitio } from '../interfaces/consultas-sitio.model';
+import { map } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ConsultasSitioService {
+
+  // Revisar que está en entorno desarrollo, pasar a base prueba (FALTA ENTORNO PRODUCCION)
+  // private url = 'http://localhost:5000/imagenweb13/us-central1/api';  // Desarrollo Local
+  // private url = 'http://localhost:5000/imagenweb13---orue-prod/us-central1/api';  // Desarrollo Local PRODUCCION REAL 
+
+  // private url = 'https://us-central1-imagenweb13.cloudfunctions.net/api';  // Pruebas Web
+  private url = ' https://us-central1-imagenweb13---orue-prod.cloudfunctions.net/api';  // PRODUCCION REAL
+
+  // private url = 'https://us-central1-transportechiarottin-90652.cloudfunctions.net/api';  // Produccion Web
+  // private url = 'https://delfosbd7-des.firebaseio.com';  //sin api con database realtime
+  
+  constructor( private http: HttpClient ) { }
+
+  // ----------- CREAR UN REGISTRO --------------------------
+  crearConsultaSitio( consultaSitio: RespuestaConsultasSitio ) {
+    // console.log(consulta);
+
+    //para pruebas lo cambio a 2
+    return this.http.post(`${ this.url }/consultasSitio`, consultaSitio)
+      .pipe(
+        map( (resp: any) => {
+          // proveedor.idConsulta = resp.idConsulta;
+          return consultaSitio;
+        })
+      );
+  }
+  
+}
